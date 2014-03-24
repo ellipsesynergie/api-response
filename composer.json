@@ -1,0 +1,35 @@
+{
+    "name": "ellipsesynergie/api-response",
+    "description": "",
+    "keywords": [
+        "api",
+        "package"
+    ],
+    "homepage": "https://github.com/ellipsesynergie/api-response",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxime Beaudoin",
+            "email": "maxime.beaudoin@ellipse-synergie.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Phil Sturgeon",
+            "email": "email@philsturgeon.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "league/fractal": "0.7.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EllipseSynergie\\ApiResponse\\": "src",
+            "EllipseSynergie\\ApiResponse\\Tests\\": "tests"
+        }
+    }
+}

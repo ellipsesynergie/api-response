@@ -30,7 +30,7 @@ EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
 
-## Usage using Laravel service provider
+## Using Laravel
 
 ``` php
 // Return a item

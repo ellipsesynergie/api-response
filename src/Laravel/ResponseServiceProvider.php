@@ -10,6 +10,7 @@ use League\Fractal\Manager;
  * Class ResponseServiceProvider
  *
  * @package EllipseSynergie\ApiResponse\Laravel
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class ResponseServiceProvider extends ServiceProvider
 {

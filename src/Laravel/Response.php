@@ -10,6 +10,7 @@ use Illuminate\Validation\Validator;
  * Class Response
  *
  * @package EllipseSynergie\ApiResponse\Laravel
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class Response extends AbstractResponse
 {

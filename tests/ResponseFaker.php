@@ -17,10 +17,11 @@ class ResponseFaker extends AbstractResponse
      */
     public function withArray(array $array, array $headers = array())
     {
-        return [
-            'data' => $array,
+        $response = [
             'status' => $this->statusCode,
             'headers' => $headers
         ];
+
+        return array_merge($response, $array);
     }
 } 

@@ -4,7 +4,6 @@ namespace EllipseSynergie\ApiResponse;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Manager;
-use Response as IlluminateResponse;
 
 /**
  * Class Response
@@ -85,7 +84,7 @@ abstract class AbstractResponse
      *
      * @param mixed $item
      * @param mixed $callback
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function withItem($item, $callback)
     {
@@ -101,7 +100,7 @@ abstract class AbstractResponse
      *
      * @param mixed $item
      * @param mixed $callback
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function withCollection($collection, $callback)
     {
@@ -117,7 +116,7 @@ abstract class AbstractResponse
      *
      * @param string $message
      * @param string $errorCode
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     protected function withError($message, $errorCode)
     {
@@ -131,10 +130,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 403 HTTP header and a given message.
+     * Generates a response with a 403 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorForbidden($message = 'Forbidden')
     {
@@ -142,10 +141,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 500 HTTP header and a given message.
+     * Generates a response with a 500 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorInternalError($message = 'Internal Error')
     {
@@ -153,10 +152,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 404 HTTP header and a given message.
+     * Generates a response with a 404 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorNotFound($message = 'Resource Not Found')
     {
@@ -164,10 +163,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 401 HTTP header and a given message.
+     * Generates a response with a 401 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorUnauthorized($message = 'Unauthorized')
     {
@@ -175,10 +174,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 400 HTTP header and a given message.
+     * Generates a response with a 400 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorWrongArgs($message = 'Wrong Arguments')
     {
@@ -186,10 +185,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 410 HTTP header and a given message.
+     * Generates a response with a 410 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorGone($message = 'Resource No Longer Available')
     {
@@ -197,10 +196,10 @@ abstract class AbstractResponse
     }
 
     /**
-     * Generates a Response with a 405 HTTP header and a given message.
+     * Generates a response with a 405 HTTP header and a given message.
      *
      * @param string $message
-     * @return \EllipseSynergie\ApiResponse\Contracts\JsonResponseInterface
+     * @return mixed
      */
     public function errorMethodNotAllowed($message = 'Method Not Allowed')
     {

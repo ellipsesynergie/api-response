@@ -108,47 +108,6 @@ class BookController extends Controller {
 
 ##Ouput example
 
-###Collection of books
-```json
-{
-    "data": [
-        {
-           "id": 1,
-		   "title": "My name is Bob!",
-		   "created_at": {
-			   "date": "2014-03-25 18:54:18",
-			   "timezone_type": 3,
-			   "timezone": "UTC"
-		   },
-		   "updated_at": {
-			   "date": "2014-03-25 18:54:18",
-			   "timezone_type": 3,
-			   "timezone": "UTC"
-		   },
-		   "deleted_at": null
-        },
-        {
-           "id": 2,
-		   "title": "Who's your dady ?",
-		   "created_at": {
-			   "date": "2014-03-26 18:54:18",
-			   "timezone_type": 3,
-			   "timezone": "UTC"
-		   },
-		   "updated_at": {
-			   "date": "2014-03-26 18:54:18",
-			   "timezone_type": 3,
-			   "timezone": "UTC"
-		   },
-		   "deleted_at": null
-        }
-    ],
-    "embeds": [
-        "author"
-    ]
-}
-```
-
 ###One book
 ```json
 {
@@ -167,6 +126,47 @@ class BookController extends Controller {
         },
         "deleted_at": null
     },
+    "embeds": [
+        "author"
+    ]
+}
+```
+
+###Collection of books
+```json
+{
+    "data": [
+        {
+           "id": 1,
+           "title": "My name is Bob!",
+           "created_at": {
+               "date": "2014-03-25 18:54:18",
+               "timezone_type": 3,
+               "timezone": "UTC"
+           },
+           "updated_at": {
+               "date": "2014-03-25 18:54:18",
+               "timezone_type": 3,
+               "timezone": "UTC"
+           },
+           "deleted_at": null
+        },
+        {
+           "id": 2,
+           "title": "Who's your dady ?",
+           "created_at": {
+               "date": "2014-03-26 18:54:18",
+               "timezone_type": 3,
+               "timezone": "UTC"
+           },
+           "updated_at": {
+               "date": "2014-03-26 18:54:18",
+               "timezone_type": 3,
+               "timezone": "UTC"
+           },
+           "deleted_at": null
+        }
+    ],
     "embeds": [
         "author"
     ]

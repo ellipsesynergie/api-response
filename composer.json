@@ -1,9 +1,10 @@
 {
     "name": "ellipsesynergie/api-response",
-    "description": "",
+    "description": "Simple package to handle response properly in your API",
     "keywords": [
         "api",
-        "package"
+        "json",
+        "fractal"
     ],
     "homepage": "https://github.com/ellipsesynergie/api-response",
     "license": "MIT",

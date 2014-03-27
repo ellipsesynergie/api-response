@@ -43,8 +43,8 @@ $manager = new \League\Fractal\Manager;
 // Set the request scope if you need embed data
 $manager->setRequestedScopes(explode(',', $_GET['embed']));
 
-// Instantiate the response object
-$response = new \EllipseSynergie\ApiResponse\Response($manager);
+// Instantiate the response object, replace the class name by your custom class
+$response = new \EllipseSynergie\ApiResponse\AbstractResponse($manager);
 ```
 
 For more option related to fractal manager, you can take a look at the [official website](http://fractal.thephpleague.com)

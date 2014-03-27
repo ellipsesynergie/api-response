@@ -32,7 +32,7 @@ EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.
 
-If you create a new implementation for a specific framework, i strongly recommend you to send a pull request to this repository.
+If you have created a new implementation for a specific framework, i strongly recommend you to send a pull request to this repository.
 
 You will also need to instantiate the response class with a fractal manager instance.
 ```php
@@ -89,7 +89,7 @@ class BookController extends Controller {
         //Try to get the book
         $book = Book::find($id):
 
-        //Book not fonud sorry !
+        //Book not found sorry !
         if(!$book){
             return Response::api()->errorNotFound('Book Not Found');
         }
@@ -104,6 +104,84 @@ class BookController extends Controller {
     }
 }
 
+```
+
+##Ouput example
+
+###Collection
+```json
+{
+    "data": [
+        {
+           "id": 1,
+		   "title": "My name is Bob!",
+		   "created_at": {
+			   "date": "2014-03-25 18:54:18",
+			   "timezone_type": 3,
+			   "timezone": "UTC"
+		   },
+		   "updated_at": {
+			   "date": "2014-03-25 18:54:18",
+			   "timezone_type": 3,
+			   "timezone": "UTC"
+		   },
+		   "deleted_at": null
+        },
+        {
+           "id": 2,
+		   "title": "Who's your dady ?",
+		   "created_at": {
+			   "date": "2014-03-26 18:54:18",
+			   "timezone_type": 3,
+			   "timezone": "UTC"
+		   },
+		   "updated_at": {
+			   "date": "2014-03-26 18:54:18",
+			   "timezone_type": 3,
+			   "timezone": "UTC"
+		   },
+		   "deleted_at": null
+        }
+    ],
+    "embeds": [
+        "author"
+    ]
+}
+```
+
+###Item
+```json
+{
+    "data": {
+        "id": 1,
+        "title": "My name is Bob!.",
+        "created_at": {
+            "date": "2014-03-25 18:54:18",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "updated_at": {
+            "date": "2014-03-25 18:54:18",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "deleted_at": null
+    },
+    "embeds": [
+        "author"
+    ]
+}
+```
+
+###Error
+```json
+{
+    "error": {
+        "code": "GEN-NOT-FOUND",
+        "http_code": 404,
+        "message": "Book Not Found"
+    }
+}
 ```
 
 

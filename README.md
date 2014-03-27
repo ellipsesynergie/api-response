@@ -31,9 +31,10 @@ EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 #### Install in your favorite framework or vanilla php
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.
-If you create a new implementation for a specific framework, a strongly recommend you to send a pull request to this repository.
 
-You also need to instantiate the response class with a fractal manager instance.
+If you create a new implementation for a specific framework, i strongly recommend you to send a pull request to this repository.
+
+You will also need to instantiate the response class with a fractal manager instance.
 ```php
 
 // Instantiate the fractal manager
@@ -46,7 +47,7 @@ $manager->setRequestedScopes(explode(',', $_GET['embed']));
 $response = new \EllipseSynergie\ApiResponse\Response($manager);
 ```
 
-For more option related to fractal, you can take a look at the [official website](http://fractal.thephpleague.com)
+For more option related to fractal manager, you can take a look at the [official website](http://fractal.thephpleague.com)
 
 
 ## Example inside Laravel controller
@@ -61,10 +62,11 @@ class BookController extends Controller {
     */
     public function index()
     {
-        $collection = Book::all():
+        //Get all books
+        $books = Book::all():
     
-        // Return a collection of resources
-        return Response::api()->withCollection($collection, new BookTransformer);
+        // Return a collection of $books
+        return Response::api()->withCollection($books, new BookTransformer);
     }
 
     /**
@@ -72,10 +74,11 @@ class BookController extends Controller {
     */
     public function show($id)
     {
-        $item = Book::find($id):
+        //Get the book
+        $book = Book::find($id):
     
-        // Return a collection of resources
-        return Response::api()->withItem($item, new BookTransformer);
+        // Return a single book
+        return Response::api()->withItem($book, new BookTransformer);
     }
     
     /**
@@ -83,9 +86,11 @@ class BookController extends Controller {
     */
     public function delete($id)
     {
-        $item = Book::find($id):
-        
-        if(!$item){
+        //Try to get the book
+        $book = Book::find($id):
+
+        //Book not fonud sorry !
+        if(!$book){
             return Response::api()->errorNotFound('Book Not Found');
         }
     }
@@ -95,7 +100,7 @@ class BookController extends Controller {
     */
     public function whatAreYouTryingToDo()
     {
-        return Response::errorMethodNotAllowed('Please don\'t try this again !');
+        return Response::errorMethodNotAllowed("Please don't try this again !");
     }
 }
 

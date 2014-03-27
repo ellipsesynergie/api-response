@@ -4,9 +4,8 @@
 [![Total Downloads](https://poser.pugx.org/ellipsesynergie/api-response/downloads.png)](https://packagist.org/packages/ellipsesynergie/api-response)
 [![Latest Stable Version](https://poser.pugx.org/ellipsesynergie/api-response/v/stable.png)](https://packagist.org/packages/ellipsesynergie/api-response)
 
-
-Simple package to handle response in your API
-
+Simple package to handle response properly in your API. This package use [Fractal](https://github.com/thephpleague/fractal)
+and are based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-wont-hate) book.
 
 ## Install
 
@@ -22,25 +21,83 @@ Via Composer
 
 Update your packages with `composer update` or install with `composer install`.
 
-### Laravel
+#### Install in Laravel 4
 Once this operation completes, you need to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
 
 ```php
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
+#### Install in your favorite framework or vanilla php
+This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
+You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.
+If you create a new implementation for a specific framework, a strongly recommend you to send a pull request to this repository.
 
-## Using Laravel
+You also need to instantiate the response class with a fractal manager instance.
+```php
+
+// Instantiate the fractal manager
+$manager = new \League\Fractal\Manager;
+
+// Set the request scope if you need embed data
+$manager->setRequestedScopes(explode(',', $_GET['embed']));
+
+// Instantiate the response object
+$response = new \EllipseSynergie\ApiResponse\Response($manager);
+```
+
+For more option related to fractal, you can take a look at the [official website](http://fractal.thephpleague.com)
+
+
+## Example inside Laravel controller
 
 ``` php
-// Return a item
-return Response::api()->withItem($item, $transformer);
+<?php
 
-// Return a collection of resources
-return Response::api()->withCollection($collection, $transformer);
+class BookController extends Controller {
 
-//Return 404 error
-return Response::api()->errorNotFound($collection, $transformer);
+    /**
+    * Example returning collection
+    */
+    public function index()
+    {
+        $collection = Book::all():
+    
+        // Return a collection of resources
+        return Response::api()->withCollection($collection, new BookTransformer);
+    }
+
+    /**
+    * Example returning item
+    */
+    public function show($id)
+    {
+        $item = Book::find($id):
+    
+        // Return a collection of resources
+        return Response::api()->withItem($item, new BookTransformer);
+    }
+    
+    /**
+    * Example resource not found
+    */
+    public function delete($id)
+    {
+        $item = Book::find($id):
+        
+        if(!$item){
+            return Response::api()->errorNotFound('Book Not Found');
+        }
+    }
+    
+    /**
+    * Example method not implemented
+    */
+    public function whatAreYouTryingToDo()
+    {
+        return Response::errorMethodNotAllowed('Please don\'t try this again !');
+    }
+}
 
 ```
 

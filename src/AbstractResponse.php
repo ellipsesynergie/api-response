@@ -77,6 +77,9 @@ abstract class AbstractResponse
     }
 
     /**
+     * Implement this !!!
+     * This method return the final response output
+     *
      * @param array $array
      * @param array $headers
      */

@@ -30,7 +30,7 @@ abstract class AbstractResponse
 
     const CODE_GONE = 'GEN-GONE';
 
-    const CODE_METHOD_NOT_ALLOWED = 'GEN-GONE-METHOD_NOT_ALLOWED';
+    const CODE_METHOD_NOT_ALLOWED = 'GEN-METHOD-NOT-ALLOWED';
 
     /**
      * HTTP Status code

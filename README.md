@@ -108,7 +108,7 @@ class BookController extends Controller {
 
 ##Ouput example
 
-###Collection
+###Collection of books
 ```json
 {
     "data": [
@@ -149,7 +149,7 @@ class BookController extends Controller {
 }
 ```
 
-###Item
+###One book
 ```json
 {
     "data": {

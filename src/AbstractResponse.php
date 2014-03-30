@@ -4,6 +4,7 @@ namespace EllipseSynergie\ApiResponse;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Manager;
+use League\Fractal\Cursor\Cursor;
 
 /**
  * Class Response
@@ -108,9 +109,10 @@ abstract class AbstractResponse
      *
      * @param mixed $item
      * @param mixed $callback
+     * @param \League\Fractal\Cursor\Cursor $cursor
      * @return mixed
      */
-    public function withCollection($collection, $callback, $cursor = null)
+    public function withCollection($collection, $callback, Cursor $cursor = null)
     {
         $resource = new Collection($collection, $callback);
 

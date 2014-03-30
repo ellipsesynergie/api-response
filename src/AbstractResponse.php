@@ -110,9 +110,13 @@ abstract class AbstractResponse
      * @param mixed $callback
      * @return mixed
      */
-    public function withCollection($collection, $callback)
+    public function withCollection($collection, $callback, $cursor = null)
     {
         $resource = new Collection($collection, $callback);
+
+        if (!is_null($cursor)) {
+            $resource->setCursor($cursor);
+        }
 
         $rootScope = $this->fractal->createData($resource);
 

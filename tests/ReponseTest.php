@@ -72,6 +72,12 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(405, $response['status']);
     }
 
+    public function testErrorUnwillingToProcessStatusCodeIs405()
+    {
+        $response = $this->response->errorUnwillingToProcess();
+        $this->assertSame(431, $response['status']);
+    }
+
     public function testWithItemReturnDataProperly()
     {
         $item = ['foo' => 'bar'];

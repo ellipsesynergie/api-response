@@ -32,6 +32,8 @@ abstract class AbstractResponse
 
     const CODE_METHOD_NOT_ALLOWED = 'GEN-METHOD-NOT-ALLOWED';
 
+    const CODE_UNWILLING_TO_PROCESS = 'GEN-UNWILLING-TO-PROCESS';
+
     /**
      * HTTP Status code
      *
@@ -210,5 +212,16 @@ abstract class AbstractResponse
     public function errorMethodNotAllowed($message = 'Method Not Allowed')
     {
         return $this->setStatusCode(405)->withError($message, self::CODE_METHOD_NOT_ALLOWED);
+    }
+
+    /**
+     * Generates a Response with a 431 HTTP header and a given message.
+     *
+     * @param string $message
+     * @return Response
+     */
+    public function errorUnwillingToProcess($message = 'Server is unwilling to process the request')
+    {
+        return $this->setStatusCode(431)->withError($message, self::CODE_UNWILLING_TO_PROCESS);
     }
 }

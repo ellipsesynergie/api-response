@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "league/fractal": "0.7.*"
+        "league/fractal": "0.8.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"

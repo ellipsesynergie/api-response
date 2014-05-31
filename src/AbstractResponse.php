@@ -4,7 +4,7 @@ namespace EllipseSynergie\ApiResponse;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Manager;
-use League\Fractal\Cursor\Cursor;
+use League\Fractal\Pagination\Cursor;
 
 /**
  * Class Response

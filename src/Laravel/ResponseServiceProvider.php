@@ -38,7 +38,7 @@ class ResponseServiceProvider extends ServiceProvider
             $manager = new Manager;
 
             // Are we going to try and include embedded data?
-            $manager->setRequestedScopes(explode(',', Input::get('embed')));
+            $manager->parseIncludes(explode(',', Input::get('embed')));
 
             // Return the Response object
             return new Response($manager);

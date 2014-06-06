@@ -95,9 +95,14 @@ abstract class AbstractResponse
      * @param mixed $callback
      * @return mixed
      */
-    public function withItem($item, $callback)
+    public function withItem($item, $callback, $meta = [])
     {
         $resource = new Item($item, $callback);
+
+        foreach($meta as $metaKey => $metaValue)
+        {
+            $resource->setMetaValue($metaKey, $metaValue);
+        }
 
         $rootScope = $this->fractal->createData($resource);
 
@@ -109,12 +114,17 @@ abstract class AbstractResponse
      *
      * @param mixed $item
      * @param mixed $callback
-     * @param \League\Fractal\Cursor\Cursor $cursor
+     * @param \League\Fractal\Pagination\Cursor $cursor
      * @return mixed
      */
-    public function withCollection($collection, $callback, Cursor $cursor = null)
+    public function withCollection($collection, $callback, Cursor $cursor = null, $meta = [])
     {
         $resource = new Collection($collection, $callback);
+
+        foreach($meta as $metaKey => $metaValue)
+        {
+            $resource->setMetaValue($metaKey, $metaValue);
+        }
 
         if (!is_null($cursor)) {
             $resource->setCursor($cursor);

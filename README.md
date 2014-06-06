@@ -14,7 +14,7 @@ Via Composer
 ``` json
 {
     "require": {
-        "ellipsesynergie/api-response": "0.2.*"
+        "ellipsesynergie/api-response": "0.3.*"
     }
 }
 ```
@@ -41,7 +41,7 @@ You will also need to instantiate the response class with a fractal manager inst
 $manager = new \League\Fractal\Manager;
 
 // Set the request scope if you need embed data
-$manager->setRequestedScopes(explode(',', $_GET['embed']));
+$manager->parseIncludes(explode(',', $_GET['include']));
 
 // Instantiate the response object, replace the class name by your custom class
 $response = new \EllipseSynergie\ApiResponse\AbstractResponse($manager);
@@ -125,10 +125,7 @@ class BookController extends Controller {
             "timezone": "UTC"
         },
         "deleted_at": null
-    },
-    "embeds": [
-        "author"
-    ]
+    }
 }
 ```
 
@@ -166,9 +163,6 @@ class BookController extends Controller {
            },
            "deleted_at": null
         }
-    ],
-    "embeds": [
-        "author"
     ]
 }
 ```

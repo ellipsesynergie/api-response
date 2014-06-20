@@ -35,6 +35,7 @@ class Response extends AbstractResponse
      *
      * @param mixed $item Data to be wrapped with League\Fractal\Resource\Item
      * @param callable|League\Fractal\Resource\ResourceInterface $item
+     * @param array $meta
      *
      * @return \Illuminate\Http\Response
      */

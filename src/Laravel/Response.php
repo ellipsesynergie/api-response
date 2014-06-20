@@ -6,6 +6,8 @@ use EllipseSynergie\ApiResponse\AbstractResponse;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use Illuminate\Support\Facades\Response as IlluminateResponse;
 use Illuminate\Validation\Validator;
+use Illuminate\Pagination\Paginator;
+use League\Fractal\Resource\Collection;
 
 /**
  * Class Response
@@ -36,16 +38,20 @@ class Response extends AbstractResponse
      *
      * @return \Illuminate\Http\Response
      */
-    public function withPaginator(Paginator $paginator, $callback)
+    public function withPaginator(Paginator $paginator, $callback, $meta = [])
     {
         $resource = new Collection($paginator->getCollection(), $callback);
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
+
+        foreach ($meta as $metaKey => $metaValue) {
+            $resource->setMetaValue($metaKey, $metaValue);
+        }
 
         $rootScope = $this->fractal->createData($resource);
 
         return $this->withArray($rootScope->toArray());
     }
-    
+
     /**
      * Generates a Response with a 400 HTTP header and a given message from validator
      *

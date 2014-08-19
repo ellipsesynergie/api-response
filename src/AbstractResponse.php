@@ -142,7 +142,7 @@ abstract class AbstractResponse
      * @param string $errorCode
      * @return mixed
      */
-    protected function withError($message, $errorCode)
+    public function withError($message, $errorCode)
     {
         return $this->withArray([
             'error' => [

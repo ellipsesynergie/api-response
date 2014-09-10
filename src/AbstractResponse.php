@@ -47,14 +47,22 @@ abstract class AbstractResponse
      *
      * @var \League\Fractal\Manager
      */
-    protected $fractal;
+    protected $manager;
 
     /**
      * @param \League\Fractal\Manager $manager
      */
     public function __construct(Manager $manager)
     {
-        $this->fractal = $manager;
+        $this->manager = $manager;
+    }
+
+    /**
+     * @return \League\Fractal\Manager
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 
     /**
@@ -104,7 +112,7 @@ abstract class AbstractResponse
             $resource->setMetaValue($metaKey, $metaValue);
         }
 
-        $rootScope = $this->fractal->createData($resource);
+        $rootScope = $this->manager->createData($resource);
 
         return $this->withArray($rootScope->toArray());
     }
@@ -130,7 +138,7 @@ abstract class AbstractResponse
             $resource->setCursor($cursor);
         }
 
-        $rootScope = $this->fractal->createData($resource);
+        $rootScope = $this->manager->createData($resource);
 
         return $this->withArray($rootScope->toArray());
     }

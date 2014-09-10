@@ -48,7 +48,7 @@ class Response extends AbstractResponse
             $resource->setMetaValue($metaKey, $metaValue);
         }
 
-        $rootScope = $this->fractal->createData($resource);
+        $rootScope = $this->manager->createData($resource);
 
         return $this->withArray($rootScope->toArray());
     }

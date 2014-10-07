@@ -1,4 +1,5 @@
 <?php
+
 namespace EllipseSynergie\ApiResponse\Laravel;
 
 use Input;
@@ -36,6 +37,12 @@ class ResponseServiceProvider extends ServiceProvider
         \Response::macro('api', function () {
 
             $manager = new Manager;
+
+            // If you have to customize the manager instance, like setting a custom serializer,
+            // I strongly suggest you to create your own service provider and add you manager configuration action here
+            // Here some example if you want to set a custom serializer :
+            // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
+
 
             // Are we going to try and include embedded data?
             $manager->parseIncludes(explode(',', Input::get('include')));

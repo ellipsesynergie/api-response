@@ -1,4 +1,5 @@
 <?php
+
 namespace EllipseSynergie\ApiResponse;
 
 use League\Fractal\Resource\Collection;
@@ -79,7 +80,7 @@ abstract class AbstractResponse
      * Setter for status code
      *
      * @param int $statusCode
-     * @return \EllipseSynergie\ApiResponse\Response
+     * @return \EllipseSynergie\ApiResponse\AbstractResponse
      */
     public function setStatusCode($statusCode)
     {
@@ -99,13 +100,15 @@ abstract class AbstractResponse
     /**
      * Response for one item
      *
-     * @param mixed $item
-     * @param mixed $callback
+     * @param $data
+     * @param callable|\League\Fractal\TransformerAbstract $transformer
+     * @param string $resourceKey
+     * @param array $meta
      * @return mixed
      */
-    public function withItem($item, $callback, $meta = [])
+    public function withItem($data, $transformer, $resourceKey = null, $meta = [])
     {
-        $resource = new Item($item, $callback);
+        $resource = new Item($data, $transformer, $resourceKey);
 
         foreach($meta as $metaKey => $metaValue)
         {
@@ -120,14 +123,16 @@ abstract class AbstractResponse
     /**
      * Response for collection of items
      *
-     * @param mixed $item
-     * @param mixed $callback
-     * @param \League\Fractal\Pagination\Cursor $cursor
+     * @param $data
+     * @param callable|\League\Fractal\TransformerAbstract $transformer
+     * @param string $resourceKey
+     * @param Cursor $cursor
+     * @param array $meta
      * @return mixed
      */
-    public function withCollection($collection, $callback, Cursor $cursor = null, $meta = [])
+    public function withCollection($data, $transformer, $resourceKey = null, Cursor $cursor = null, $meta = [])
     {
-        $resource = new Collection($collection, $callback);
+        $resource = new Collection($data, $transformer, $resourceKey);
 
         foreach($meta as $metaKey => $metaValue)
         {
@@ -242,7 +247,7 @@ abstract class AbstractResponse
      * Generates a Response with a 431 HTTP header and a given message.
      *
      * @param string $message
-     * @return Response
+     * @return mixed
      */
     public function errorUnwillingToProcess($message = 'Server is unwilling to process the request')
     {

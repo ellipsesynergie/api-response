@@ -33,15 +33,15 @@ class Response extends AbstractResponse
     /**
      * Respond with a paginator, and a transformer.
      *
-     * @param mixed $item Data to be wrapped with League\Fractal\Resource\Item
-     * @param callable|League\Fractal\Resource\ResourceInterface $item
+     * @param Paginator $paginator
+     * @param callable|\League\Fractal\TransformerAbstract $transformer
+     * @param string $resourceKey
      * @param array $meta
-     *
      * @return \Illuminate\Http\Response
      */
-    public function withPaginator(Paginator $paginator, $callback, $meta = [])
+    public function withPaginator(Paginator $paginator, $transformer, $resourceKey = null, $meta = [])
     {
-        $resource = new Collection($paginator->getCollection(), $callback);
+        $resource = new Collection($paginator->getCollection(), $transformer, $resourceKey);
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
 
         foreach ($meta as $metaKey => $metaValue) {

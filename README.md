@@ -70,6 +70,61 @@ class BookController extends Controller {
     }
 
     /**
+    * Example returning collection with custom key
+    */
+    public function index()
+    {
+        //Get all books
+        $books = Book::all():
+        
+        //Custom key
+        $customKey = 'books';
+    
+        // Return a collection of books
+        return Response::api()->withCollection($books, new BookTransformer, $customKey);
+    }
+
+    /**
+    * Example returning collection with paginator
+    */
+    public function index()
+    {
+        //Get all books
+        $books = Book::paginate(15):
+       
+       // Return a collection of $books with pagination
+       return \Response::api()->withPaginator(
+           $books,
+           new BookTransformer
+       );
+    }
+
+    /**
+    * Example returning collection with paginator with custom key and meta
+    */
+    public function index()
+    {
+        //Get all books
+        $books = Book::paginate(15):
+        
+        //Custom key
+        $customKey = 'books';
+        
+        //Custom meta
+        $meta = [
+            'category' = 'fantasy'
+        ];
+       
+       // Return a collection of $books with pagination
+       return \Response::api()->withPaginator(
+           $books,
+           new BookTransformer,
+           $customKey,
+           $meta
+       );
+    }
+
+    /**
     * Example returning item
     */
     public function show($id)
@@ -79,6 +134,26 @@ class BookController extends Controller {
     
         // Return a single book
         return Response::api()->withItem($book, new BookTransformer);
+    }
+
+    /**
+    * Example returning item with a custom key and meta
+    */
+    public function showWithCustomKeyAndMeta($id)
+    {
+        //Get the book
+        $book = Book::find($id):
+        
+        //Custom key
+        $customKey = 'book';
+        
+        //Custom meta
+        $meta = [
+            'readers' = $book->readers
+        ];
+    
+        // Return a single book
+        return Response::api()->withItem($book, new BookTransformer, $customKey, $meta);
     }
     
     /**

@@ -63,7 +63,7 @@ class BookController extends Controller {
     public function index()
     {
         //Get all books
-        $books = Book::all():
+        $books = Book::all();
     
         // Return a collection of $books
         return Response::api()->withCollection($books, new BookTransformer);
@@ -75,7 +75,7 @@ class BookController extends Controller {
     public function index()
     {
         //Get all books
-        $books = Book::all():
+        $books = Book::all();
         
         //Custom key
         $customKey = 'books';
@@ -90,7 +90,7 @@ class BookController extends Controller {
     public function index()
     {
         //Get all books
-        $books = Book::paginate(15):
+        $books = Book::paginate(15);
        
        // Return a collection of $books with pagination
        return \Response::api()->withPaginator(
@@ -105,7 +105,7 @@ class BookController extends Controller {
     public function index()
     {
         //Get all books
-        $books = Book::paginate(15):
+        $books = Book::paginate(15);
         
         //Custom key
         $customKey = 'books';
@@ -130,7 +130,7 @@ class BookController extends Controller {
     public function show($id)
     {
         //Get the book
-        $book = Book::find($id):
+        $book = Book::find($id);
     
         // Return a single book
         return Response::api()->withItem($book, new BookTransformer);
@@ -142,7 +142,7 @@ class BookController extends Controller {
     public function showWithCustomKeyAndMeta($id)
     {
         //Get the book
-        $book = Book::find($id):
+        $book = Book::find($id);
         
         //Custom key
         $customKey = 'book';
@@ -162,7 +162,7 @@ class BookController extends Controller {
     public function delete($id)
     {
         //Try to get the book
-        $book = Book::find($id):
+        $book = Book::find($id);
 
         //Book not found sorry !
         if(!$book){

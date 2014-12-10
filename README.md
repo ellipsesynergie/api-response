@@ -14,7 +14,7 @@ Via Composer
 ``` json
 {
     "require": {
-        "ellipsesynergie/api-response": "0.7.*"
+        "ellipsesynergie/api-response": "~0.8"
     }
 }
 ```

@@ -12,15 +12,9 @@ and are based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-
 
 Via Composer
 
-``` json
-{
-    "require": {
-        "ellipsesynergie/api-response": "~0.8"
-    }
-}
+``` bash
+$ composer require league/fractal
 ```
-
-Update your packages with `composer update` or install with `composer install`.
 
 #### Install in Laravel 4
 Once this operation completes, you need to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.

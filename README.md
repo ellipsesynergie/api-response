@@ -13,7 +13,7 @@ and are based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-
 Via Composer
 
 ``` bash
-$ composer require league/fractal
+$ composer require ellipsesynergie/api-response
 ```
 
 #### Install in Laravel 4

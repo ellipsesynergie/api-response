@@ -63,4 +63,4 @@ class Response extends AbstractResponse
     {
         return $this->errorWrongArgs($validator->messages()->toArray());
     }
-} 
+}

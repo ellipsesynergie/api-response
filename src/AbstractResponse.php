@@ -110,8 +110,7 @@ abstract class AbstractResponse
     {
         $resource = new Item($data, $transformer, $resourceKey);
 
-        foreach($meta as $metaKey => $metaValue)
-        {
+        foreach ($meta as $metaKey => $metaValue) {
             $resource->setMetaValue($metaKey, $metaValue);
         }
 
@@ -134,8 +133,7 @@ abstract class AbstractResponse
     {
         $resource = new Collection($data, $transformer, $resourceKey);
 
-        foreach($meta as $metaKey => $metaValue)
-        {
+        foreach ($meta as $metaKey => $metaValue) {
             $resource->setMetaValue($metaKey, $metaValue);
         }
 

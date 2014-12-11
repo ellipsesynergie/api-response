@@ -24,4 +24,4 @@ class ResponseFaker extends AbstractResponse
 
         return array_merge($response, $array);
     }
-} 
+}

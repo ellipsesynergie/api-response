@@ -4,6 +4,7 @@ namespace EllipseSynergie\ApiResponse\Tests;
 
 use EllipseSynergie\ApiResponse\Tests\ResponseFaker as Response;
 use League\Fractal\Manager;
+use League\Fractal\Pagination\Cursor;
 
 /**
  * Class ResponseTest
@@ -12,10 +13,19 @@ use League\Fractal\Manager;
  */
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Response
+     */
+    protected $response;
 
     public function setUp()
     {
         $this->response = new Response(new Manager());
+    }
+
+    public function testGetManager()
+    {
+        $this->assertInstanceOf('League\Fractal\Manager', $this->response->getManager());
     }
 
     public function testSetStatusCodeWorkProperly()
@@ -82,25 +92,72 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $item = ['foo' => 'bar'];
 
-        $response = $this->response->withItem($item, function($data){
+        $response = $this->response->withItem($item, function ($data) {
             return $data;
         });
 
         $this->assertSame('bar', $response['data']['foo']);
     }
 
-    public function testWithCollecrtionReturnDataProperly()
+    public function testWithItemReturnMetaProperly()
+    {
+        $item = ['foo' => 'bar'];
+
+        $response = $this->response->withItem($item, function ($data) {
+            return $data;
+        }, 'data', ['foo' => 'bar']);
+
+        $this->assertSame('bar', $response['meta']['foo']);
+    }
+
+    public function testWithCollectionReturnDataProperly()
     {
         $item = [
             ['foo' => 'bar'],
             ['foo' => 'maxime'],
         ];
 
-        $response = $this->response->withCollection($item, function($data){
+        $response = $this->response->withCollection($item, function ($data) {
             return $data;
         });
 
         $this->assertSame('bar', $response['data'][0]['foo']);
         $this->assertSame('maxime', $response['data'][1]['foo']);
+    }
+
+    public function testWithCollectionReturnMetaProperly()
+    {
+        $item = [
+            ['foo' => 'bar'],
+            ['foo' => 'maxime'],
+        ];
+
+        $response = $this->response->withCollection($item, function ($data) {
+            return $data;
+        }, null, null, ['foo' => 'bar']);
+
+        $this->assertSame('bar', $response['meta']['foo']);
+    }
+
+    public function testWithCollectionReturnCursorProperly()
+    {
+        $item = [
+            ['foo' => 'bar'],
+            ['foo' => 'maxime'],
+        ];
+
+        $response = $this->response->withCollection($item, function ($data) {
+            return $data;
+        }, null, new Cursor(100, 1, 200, 300), ['foo' => 'bar']);
+
+        $this->assertSame(
+            [
+                'current' => 100,
+                'prev' => 1,
+                'next' => 200,
+                'count' => 300,
+            ],
+            $response['meta']['cursor']
+        );
     }
 }

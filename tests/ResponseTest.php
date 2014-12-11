@@ -10,6 +10,7 @@ use League\Fractal\Pagination\Cursor;
  * Class ResponseTest
  *
  * @package EllipseSynergie\ApiResponse\Tests
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {

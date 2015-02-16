@@ -18,7 +18,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $messageBag = m::mock('Illuminate\Support\MessageBag');
         $messageBag->shouldReceive('toArray')->andReturn(['foo' => 'bar']);
 
-        $validator = m::mock('Illuminate\Validation\Validator');
+        $validator = m::mock('Illuminate\Contracts\Validation\Validator');
         $validator->shouldReceive('messages')->once()->andReturn($messageBag);
         $response = new Response(new Manager());
 
@@ -27,13 +27,13 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testWithPaginatorWorkProperly()
     {
-        $paginator = m::mock('Illuminate\Pagination\Paginator');
+        $paginator = m::mock('Illuminate\Contracts\Pagination\LengthAwarePaginator');
         $paginator->shouldReceive('getCollection')->andReturn([['foo' => 'bar']]);
-        $paginator->shouldReceive('getCurrentPage')->andReturn(1);
-        $paginator->shouldReceive('getLastPage')->andReturn(2);
-        $paginator->shouldReceive('getTotal')->andReturn(3);
-        $paginator->shouldReceive('getPerPage')->andReturn(1);
-        $paginator->shouldReceive('getUrl')->andReturn('localhost');
+        $paginator->shouldReceive('currentPage')->andReturn(1);
+        $paginator->shouldReceive('lastPage')->andReturn(2);
+        $paginator->shouldReceive('total')->andReturn(3);
+        $paginator->shouldReceive('perPage')->andReturn(1);
+        $paginator->shouldReceive('url')->andReturn('localhost');
         $paginator->shouldReceive('count')->andReturn(3);
 
         $response = new Response(new Manager());

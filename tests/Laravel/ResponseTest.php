@@ -19,7 +19,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $messageBag->shouldReceive('toArray')->andReturn(['foo' => 'bar']);
 
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $validator->shouldReceive('messages')->once()->andReturn($messageBag);
+        $validator->shouldReceive('getMessageBag')->once()->andReturn($messageBag);
         $response = new Response(new Manager());
 
         $response->errorWrongArgsValidator($validator);
@@ -28,7 +28,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testWithPaginatorWorkProperly()
     {
         $paginator = m::mock('Illuminate\Contracts\Pagination\LengthAwarePaginator');
-        $paginator->shouldReceive('getCollection')->andReturn([['foo' => 'bar']]);
+        $paginator->shouldReceive('items')->andReturn([['foo' => 'bar']]);
         $paginator->shouldReceive('currentPage')->andReturn(1);
         $paginator->shouldReceive('lastPage')->andReturn(2);
         $paginator->shouldReceive('total')->andReturn(3);

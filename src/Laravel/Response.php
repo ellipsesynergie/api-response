@@ -41,7 +41,7 @@ class Response extends AbstractResponse
      */
     public function withPaginator(LengthAwarePaginator $paginator, $transformer, $resourceKey = null, $meta = [])
     {
-        $resource = new Collection($paginator->getCollection(), $transformer, $resourceKey);
+        $resource = new Collection($paginator->items(), $transformer, $resourceKey);
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
 
         foreach ($meta as $metaKey => $metaValue) {
@@ -61,6 +61,6 @@ class Response extends AbstractResponse
      */
     public function errorWrongArgsValidator(Validator $validator)
     {
-        return $this->errorWrongArgs($validator->messages()->toArray());
+        return $this->errorWrongArgs($validator->getMessageBag()->toArray());
     }
 }

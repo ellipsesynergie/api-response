@@ -34,5 +34,10 @@
             "EllipseSynergie\\ApiResponse\\": "src",
             "EllipseSynergie\\ApiResponse\\Tests\\": "tests"
         }
+    },
+    "extra": {
+        "branch-alias": {
+          "dev-master": "0.9-dev"
+        }
     }
 }

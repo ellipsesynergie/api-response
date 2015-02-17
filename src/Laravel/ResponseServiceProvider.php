@@ -18,20 +18,12 @@ use League\Fractal\Manager;
  */
 class ResponseServiceProvider extends ServiceProvider
 {
-
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
     /**
      * Register the service provider.
      *
      * @return void
      */
-    public function register()
+    public function boot()
     {
         // Register response macro
         \Response::macro('api', function () {
@@ -43,12 +35,21 @@ class ResponseServiceProvider extends ServiceProvider
             // Here some example if you want to set a custom serializer :
             // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
 
-
             // Are we going to try and include embedded data?
             $manager->parseIncludes(explode(',', Input::get('include')));
 
             // Return the Response object
             return new Response($manager);
         });
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 }

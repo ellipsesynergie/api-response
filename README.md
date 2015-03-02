@@ -18,6 +18,16 @@ Via Composer
 $ composer require ellipsesynergie/api-response
 ```
 
+## Requirements
+
+The following versions of PHP are supported by this version.
+
+* PHP 5.4
+* PHP 5.5
+* PHP 5.6
+* PHP 7.0-dev
+* HHVM
+
 #### Install in Laravel 4
 Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version.
 

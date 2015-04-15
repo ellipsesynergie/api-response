@@ -73,6 +73,8 @@ class ResponseServiceProvider extends ServiceProvider
      */
     private function registerMacro($response)
     {
-        \Response::macro('api', $response);
+        \Response::macro('api', function() use ($response){
+            return $response;
+        });
     }
 }

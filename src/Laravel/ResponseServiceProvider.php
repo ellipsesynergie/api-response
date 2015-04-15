@@ -2,7 +2,7 @@
 
 namespace EllipseSynergie\ApiResponse\Laravel;
 
-use Input;
+use Request;
 use Illuminate\Support\ServiceProvider;
 use EllipseSynergie\ApiResponse\Laravel\Response;
 use League\Fractal\Manager;
@@ -25,22 +25,34 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Register response macro
-        \Response::macro('api', function () {
+        $response = $this->bootResponse();
+        $this->registerMacro($response);
+    }
 
-            $manager = new Manager;
+    /**
+     * Boot response
+     *
+     * @return Response
+     */
+    private function bootResponse()
+    {
+        $manager = new Manager;
 
-            // If you have to customize the manager instance, like setting a custom serializer,
-            // I strongly suggest you to create your own service provider and add you manager configuration action here
-            // Here some example if you want to set a custom serializer :
-            // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
+        // If you have to customize the manager instance, like setting a custom serializer,
+        // I strongly suggest you to create your own service provider and add you manager configuration action here
+        // Here some example if you want to set a custom serializer :
+        // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
 
-            // Are we going to try and include embedded data?
-            $manager->parseIncludes(explode(',', Input::get('include')));
+        // Are we going to try and include embedded data?
+        $manager->parseIncludes(explode(',', Request::input('include')));
 
-            // Return the Response object
-            return new Response($manager);
-        });
+        // Return the Response object
+        $response = new Response($manager);
+
+        //Set the response instance properly
+        $this->app->instance('EllipseSynergie\ApiResponse\Contracts\Response', $response);
+
+        return $response;
     }
 
     /**
@@ -51,5 +63,16 @@ class ResponseServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Register response macro
+     *
+     * @deprecated We still register macro for backward compatibility, but DO NOT USE THIS MACRO ANYMORE !
+     * @param $response
+     */
+    private function registerMacro($response)
+    {
+        \Response::macro('api', $response);
     }
 }

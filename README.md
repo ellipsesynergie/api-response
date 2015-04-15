@@ -38,6 +38,15 @@ Once this operation completes, you need to add the service provider. Open `app/c
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
+#### Install in Lumen 1.*
+Once this operation completes, you need to add the service provider. Open `bootstrap/app.php`, and register this provider.
+
+```php
+$app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
+```
+
+You also need to uncomment the line `$app->withFacades();` in the file `bootstrap/app.php`
+
 #### Install in your favorite framework or vanilla php
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.
@@ -59,13 +68,22 @@ $response = new \EllipseSynergie\ApiResponse\AbstractResponse($manager);
 
 For more option related to fractal manager, you can take a look at the [official website](http://fractal.thephpleague.com)
 
-
-## Example inside Laravel controller
+## Example inside Laravel or Lumen controller
 
 ``` php
 <?php
 
+use EllipseSynergie\ApiResponse\Contracts\Response;
+
 class BookController extends Controller {
+
+    /**
+     * @param Response
+     */
+    public function __construct(Response $response)
+    {
+        $this->response = $response;
+    }
 
     /**
     * Example returning collection
@@ -76,7 +94,7 @@ class BookController extends Controller {
         $books = Book::all();
     
         // Return a collection of $books
-        return Response::api()->withCollection($books, new BookTransformer);
+        return $this->response->withCollection($books, new BookTransformer);
     }
 
     /**
@@ -91,7 +109,7 @@ class BookController extends Controller {
         $customKey = 'books';
     
         // Return a collection of books
-        return Response::api()->withCollection($books, new BookTransformer, $customKey);
+        return $this->response->withCollection($books, new BookTransformer, $customKey);
     }
 
     /**
@@ -103,7 +121,7 @@ class BookController extends Controller {
         $books = Book::paginate(15);
        
        // Return a collection of $books with pagination
-       return \Response::api()->withPaginator(
+       return $this->response->withPaginator(
            $books,
            new BookTransformer
        );
@@ -126,7 +144,7 @@ class BookController extends Controller {
         ];
        
        // Return a collection of $books with pagination
-       return \Response::api()->withPaginator(
+       return $this->response->withPaginator(
            $books,
            new BookTransformer,
            $customKey,
@@ -143,7 +161,7 @@ class BookController extends Controller {
         $book = Book::find($id);
     
         // Return a single book
-        return Response::api()->withItem($book, new BookTransformer);
+        return $this->response->withItem($book, new BookTransformer);
     }
 
     /**
@@ -163,7 +181,7 @@ class BookController extends Controller {
         ];
     
         // Return a single book
-        return Response::api()->withItem($book, new BookTransformer, $customKey, $meta);
+        return $this->response->withItem($book, new BookTransformer, $customKey, $meta);
     }
     
     /**
@@ -176,7 +194,7 @@ class BookController extends Controller {
 
         //Book not found sorry !
         if(!$book){
-            return Response::api()->errorNotFound('Book Not Found');
+            return $this->response->errorNotFound('Book Not Found');
         }
     }
     
@@ -185,7 +203,7 @@ class BookController extends Controller {
     */
     public function whatAreYouTryingToDo()
     {
-        return Response::errorMethodNotAllowed("Please don't try this again !");
+        return $this->response->errorMethodNotAllowed("Please don't try this again !");
     }
 }
 

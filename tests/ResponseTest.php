@@ -24,6 +24,11 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->response = new Response(new Manager());
     }
 
+    public function testImplementContractProperly()
+    {
+        $this->assertInstanceOf('EllipseSynergie\ApiResponse\Contracts\Response', $this->response);
+    }
+
     public function testGetManager()
     {
         $this->assertInstanceOf('League\Fractal\Manager', $this->response->getManager());

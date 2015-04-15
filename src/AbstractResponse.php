@@ -2,6 +2,7 @@
 
 namespace EllipseSynergie\ApiResponse;
 
+use EllipseSynergie\ApiResponse\Contracts\Response;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Manager;
@@ -17,7 +18,7 @@ use League\Fractal\Pagination\Cursor;
  * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  * @author Phil Sturgeon <email@philsturgeon.co.uk>
  */
-abstract class AbstractResponse
+abstract class AbstractResponse implements Response
 {
 
     const CODE_WRONG_ARGS = 'GEN-WRONG-ARGS';

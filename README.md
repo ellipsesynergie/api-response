@@ -38,7 +38,7 @@ Once this operation completes, you need to add the service provider. Open `app/c
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
-#### Install in Lumen 1.*
+#### Install in Lumen 5
 Once this operation completes, you need to add the service provider. Open `bootstrap/app.php`, and register this provider.
 
 ```php

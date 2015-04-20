@@ -10,6 +10,7 @@
             <directory suffix=".php">src/</directory>
             <exclude>
                 <file>src/Laravel/ResponseServiceProvider.php</file>
+                <file>src/Laravel/LumenServiceProvider.php</file>
             </exclude>
         </whitelist>
     </filter>

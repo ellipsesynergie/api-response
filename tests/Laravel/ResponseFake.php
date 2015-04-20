@@ -2,15 +2,17 @@
 
 namespace EllipseSynergie\ApiResponse\Tests\Laravel;
 
-class Response extends \EllipseSynergie\ApiResponse\Laravel\Response
+use Illuminate\Contracts\Routing\ResponseFactory;
+
+class ResponseFake extends \EllipseSynergie\ApiResponse\Laravel\Response
 {
     /**
      * @param array $array
      * @param array $headers
-     * @return \Illuminate\Http\Response
+     * @return ResponseFactory
      */
     public function withArray(array $array, array $headers = array())
     {
-        return $array;
+        return (new ResponseFactoryFake())->json($array);
     }
 }

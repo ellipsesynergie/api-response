@@ -20,7 +20,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
         $validator->shouldReceive('getMessageBag')->once()->andReturn($messageBag);
-        $response = new Response(new Manager());
+        $response = new ResponseFake(new Manager());
 
         $response->errorWrongArgsValidator($validator);
     }
@@ -36,7 +36,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $paginator->shouldReceive('url')->andReturn('localhost');
         $paginator->shouldReceive('count')->andReturn(3);
 
-        $response = new Response(new Manager());
+        $response = new ResponseFake(new Manager());
 
         $result = $response->withPaginator($paginator, function ($data) {
             return $data;

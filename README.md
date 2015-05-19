@@ -140,7 +140,7 @@ class BookController extends Controller {
         
         //Custom meta
         $meta = [
-            'category' = 'fantasy'
+            'category' => 'fantasy'
         ];
        
        // Return a collection of $books with pagination
@@ -177,7 +177,7 @@ class BookController extends Controller {
         
         //Custom meta
         $meta = [
-            'readers' = $book->readers
+            'readers' => $book->readers
         ];
     
         // Return a single book

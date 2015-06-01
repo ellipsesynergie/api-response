@@ -33,14 +33,14 @@ Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because
 However, you can use the version `0.8.*` if you need to use it inside Laravel 4.
 
 #### Install in Laravel 5
-Once this operation completes, you need to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
+Add this following service provider to your `config/app.php` file.
 
 ```php
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
 #### Install in Lumen 5
-Once this operation completes, you need to add the service provider. Open `bootstrap/app.php`, and register this provider.
+Register this service provider to your `bootstrap/app.php` file.
 
 ```php
 $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');

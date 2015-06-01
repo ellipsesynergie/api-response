@@ -29,7 +29,8 @@ The following versions of PHP are supported by this version.
 * HHVM
 
 #### Install in Laravel 4
-Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version.
+Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version. 
+However, you can use the version `0.8.*` if you need to use it inside Laravel 4.
 
 #### Install in Laravel 5
 Once this operation completes, you need to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.

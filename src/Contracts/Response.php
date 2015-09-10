@@ -51,9 +51,10 @@ interface Response
      * @param callable|\League\Fractal\TransformerAbstract $transformer
      * @param string $resourceKey
      * @param array $meta
+     * @param array $headers
      * @return mixed
      */
-    public function withItem($data, $transformer, $resourceKey = null, $meta = []);
+    public function withItem($data, $transformer, $resourceKey = null, $meta = [], array $headers = array());
 
     /**
      * Response for collection of items
@@ -63,80 +64,90 @@ interface Response
      * @param string $resourceKey
      * @param Cursor $cursor
      * @param array $meta
+     * @param array $headers
      * @return mixed
      */
-    public function withCollection($data, $transformer, $resourceKey = null, Cursor $cursor = null, $meta = []);
+    public function withCollection($data, $transformer, $resourceKey = null, Cursor $cursor = null, $meta = [], array $headers = array());
 
     /**
      * Response for errors
      *
      * @param string $message
      * @param string $errorCode
+     * @param array  $headers
      * @return mixed
      */
-    public function withError($message, $errorCode);
+    public function withError($message, $errorCode, array $headers);
 
     /**
      * Generates a response with a 403 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorForbidden($message);
+    public function errorForbidden($message, array $headers);
 
     /**
      * Generates a response with a 500 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorInternalError($message);
+    public function errorInternalError($message, array $headers);
 
     /**
      * Generates a response with a 404 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorNotFound($message);
+    public function errorNotFound($message, array $headers);
 
     /**
      * Generates a response with a 401 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorUnauthorized($message);
+    public function errorUnauthorized($message, array $headers);
 
     /**
      * Generates a response with a 400 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorWrongArgs($message);
+    public function errorWrongArgs($message, array $headers);
 
     /**
      * Generates a response with a 410 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorGone($message);
+    public function errorGone($message, array $headers);
 
     /**
      * Generates a response with a 405 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorMethodNotAllowed($message);
+    public function errorMethodNotAllowed($message, array $headers);
 
     /**
      * Generates a Response with a 431 HTTP header and a given message.
      *
      * @param string $message
+     * @param array  $headers
      * @return mixed
      */
-    public function errorUnwillingToProcess($message);
+    public function errorUnwillingToProcess($message, array $headers);
 }

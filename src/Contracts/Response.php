@@ -77,7 +77,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function withError($message, $errorCode, array $headers);
+    public function withError($message, $errorCode, array $headers = array());
 
     /**
      * Generates a response with a 403 HTTP header and a given message.
@@ -86,7 +86,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorForbidden($message, array $headers);
+    public function errorForbidden($message, array $headers = array());
 
     /**
      * Generates a response with a 500 HTTP header and a given message.
@@ -95,7 +95,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorInternalError($message, array $headers);
+    public function errorInternalError($message, array $headers = array());
 
     /**
      * Generates a response with a 404 HTTP header and a given message.
@@ -104,7 +104,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorNotFound($message, array $headers);
+    public function errorNotFound($message, array $headers = array());
 
     /**
      * Generates a response with a 401 HTTP header and a given message.
@@ -113,7 +113,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorUnauthorized($message, array $headers);
+    public function errorUnauthorized($message, array $headers = array());
 
     /**
      * Generates a response with a 400 HTTP header and a given message.
@@ -122,7 +122,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorWrongArgs($message, array $headers);
+    public function errorWrongArgs($message, array $headers = array());
 
     /**
      * Generates a response with a 410 HTTP header and a given message.
@@ -131,7 +131,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorGone($message, array $headers);
+    public function errorGone($message, array $headers = array());
 
     /**
      * Generates a response with a 405 HTTP header and a given message.
@@ -140,7 +140,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorMethodNotAllowed($message, array $headers);
+    public function errorMethodNotAllowed($message, array $headers = array());
 
     /**
      * Generates a Response with a 431 HTTP header and a given message.
@@ -149,5 +149,5 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorUnwillingToProcess($message, array $headers);
+    public function errorUnwillingToProcess($message, array $headers = array());
 }

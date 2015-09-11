@@ -159,14 +159,16 @@ abstract class AbstractResponse implements Response
      */
     public function withError($message, $errorCode, array $headers = array())
     {
-        return $this->withArray([
-            'error' => [
-                'code' => $errorCode,
-                'http_code' => $this->statusCode,
-                'message' => $message
+        return $this->withArray(
+            [
+                'error' => [
+                    'code' => $errorCode,
+                    'http_code' => $this->statusCode,
+                    'message' => $message
+                ]
             ],
             $headers
-        ]);
+        );
     }
 
     /**

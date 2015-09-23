@@ -2,9 +2,7 @@
 
 namespace EllipseSynergie\ApiResponse\Laravel;
 
-use Request;
 use Illuminate\Support\ServiceProvider;
-use EllipseSynergie\ApiResponse\Laravel\Response;
 use League\Fractal\Manager;
 
 /**
@@ -44,7 +42,7 @@ class ResponseServiceProvider extends ServiceProvider
         // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
 
         // Are we going to try and include embedded data?
-        $manager->parseIncludes(explode(',', Request::input('include')));
+        $manager->parseIncludes(explode(',', $this->app['Illuminate\Http\Request']->get('include')));
 
         // Return the Response object
         $response = new Response($manager);
@@ -69,7 +67,7 @@ class ResponseServiceProvider extends ServiceProvider
      * Register response macro
      *
      * @deprecated We still register macro for backward compatibility, but DO NOT USE THIS MACRO ANYMORE !
-     * @param $response
+     * @param Response $response
      */
     private function registerMacro($response)
     {

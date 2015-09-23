@@ -5,7 +5,6 @@ namespace EllipseSynergie\ApiResponse\Laravel;
 use Illuminate\Support\ServiceProvider;
 use EllipseSynergie\ApiResponse\Laravel\Response;
 use League\Fractal\Manager;
-use Request;
 
 /**
  * Class LumenServiceProvider
@@ -33,7 +32,7 @@ class LumenServiceProvider extends ServiceProvider
         // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
 
         // Are we going to try and include embedded data?
-        $manager->parseIncludes(explode(',', Request::input('include')));
+        $manager->parseIncludes(explode(',', $this->app['Illuminate\Http\Request']->get('include')));
 
         //Set the response instance properly
         $this->app->instance('EllipseSynergie\ApiResponse\Contracts\Response', new Response($manager));

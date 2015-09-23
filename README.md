@@ -46,8 +46,6 @@ Register this service provider to your `bootstrap/app.php` file.
 $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
 ```
 
-You also need to uncomment the line `$app->withFacades();` in the file `bootstrap/app.php`
-
 #### Install in your favorite framework or vanilla php
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.

@@ -3,7 +3,6 @@
 namespace EllipseSynergie\ApiResponse\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use EllipseSynergie\ApiResponse\Laravel\Response;
 use League\Fractal\Manager;
 
 /**

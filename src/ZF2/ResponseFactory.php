@@ -27,10 +27,11 @@ class ResponseFactory implements FactoryInterface
         
         $mvcEvent = $serviceLocator->get('application')->getMvcEvent();
         $response = $mvcEvent->getResponse();
+        $request = $mvcEvent->getRequest();
         // Instantiate the fractal manager
         $manager = new Manager;
         // Set the request scope if you need embed data
-        $manager->parseIncludes(explode(',', @$_GET['include']));
+        $manager->parseIncludes(explode(',', $request->getQuery()->get('include')));
         // Instantiate the response object, replace the class name by your custom class
         return new \EllipseSynergie\ApiResponse\ZF2\Response($manager, $response);
     }

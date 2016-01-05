@@ -42,6 +42,12 @@ class Response extends AbstractResponse
     {
         $response = $this->response;
         $response->setStatusCode($this->statusCode);
+
+        $headers = array_change_key_case($headers);
+        if (!isset($headers['content-type'])) {
+            $headers['content-type'] = 'application/json';
+        }
+
         $response->getHeaders()->addHeaders($headers);
         $response->setContent(\Zend\Json\Json::encode($array));
         return $response;

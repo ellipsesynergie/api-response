@@ -96,7 +96,7 @@ abstract class AbstractResponse implements Response
      * @param array $array
      * @param array $headers
      */
-    abstract public function withArray(array $array, array $headers = array());
+    abstract public function withArray(array $array, array $headers = []);
 
     /**
      * Response for one item

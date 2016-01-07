@@ -42,7 +42,7 @@ interface Response
      * @param array $array
      * @param array $headers
      */
-    public function withArray(array $array, array $headers = array());
+    public function withArray(array $array, array $headers = []);
 
     /**
      * Response for one item

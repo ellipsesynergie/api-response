@@ -25,7 +25,7 @@ class Response extends AbstractResponse
      * @param array $headers
      * @return ResponseFactory
      */
-    public function withArray(array $array, array $headers = array())
+    public function withArray(array $array, array $headers = [])
     {
         return response()->json($array, $this->statusCode, $headers);
     }

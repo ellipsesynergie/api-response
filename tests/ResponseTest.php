@@ -2,6 +2,7 @@
 
 namespace EllipseSynergie\ApiResponse\Tests;
 
+use EllipseSynergie\ApiResponse\Tests\Laravel\ResponseFake;
 use EllipseSynergie\ApiResponse\Tests\ResponseFaker as Response;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
@@ -165,5 +166,26 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             ],
             $response['meta']['cursor']
         );
+    }
+
+    public function testWithErrorUsingCustomHeaders()
+    {
+        $response = $this->response
+            ->setStatusCode(401)
+            ->withError('Custom message', ResponseFake::CODE_UNAUTHORIZED, [
+                'Authorization' => 'Foo'
+            ]);
+
+        $this->assertSame([
+            'status' => 401,
+            'headers' => [
+                'Authorization' => 'Foo'
+            ],
+            'error' => [
+                'code' => 'GEN-UNAUTHORIZED',
+                'http_code' => 401,
+                'message' => 'Custom message'
+            ]
+        ], $response);
     }
 }

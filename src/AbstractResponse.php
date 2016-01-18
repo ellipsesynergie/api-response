@@ -266,4 +266,15 @@ abstract class AbstractResponse implements Response
     {
         return $this->setStatusCode(431)->withError($message, self::CODE_UNWILLING_TO_PROCESS, $headers);
     }
+
+    /**
+     * Generates a Response with a 204 HTTP header.
+     *
+     * @param array  $headers
+     * @return mixed
+     */
+    public function noContent(array $headers = array())
+    {
+        return $this->setStatusCode(204)->withArray([], $headers);
+    }
 }

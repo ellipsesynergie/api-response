@@ -179,7 +179,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorForbidden($message = 'Forbidden', array $headers = [])
     {
-        return $this->setStatusCode(403)->withError($message, self::CODE_FORBIDDEN, $headers);
+        return $this->setStatusCode(403)->withError($message, static::CODE_FORBIDDEN, $headers);
     }
 
     /**
@@ -191,7 +191,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorInternalError($message = 'Internal Error', array $headers = [])
     {
-        return $this->setStatusCode(500)->withError($message, self::CODE_INTERNAL_ERROR, $headers);
+        return $this->setStatusCode(500)->withError($message, static::CODE_INTERNAL_ERROR, $headers);
     }
 
     /**
@@ -203,7 +203,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorNotFound($message = 'Resource Not Found', array $headers = [])
     {
-        return $this->setStatusCode(404)->withError($message, self::CODE_NOT_FOUND, $headers);
+        return $this->setStatusCode(404)->withError($message, static::CODE_NOT_FOUND, $headers);
     }
 
     /**
@@ -215,7 +215,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorUnauthorized($message = 'Unauthorized', array $headers = [])
     {
-        return $this->setStatusCode(401)->withError($message, self::CODE_UNAUTHORIZED, $headers);
+        return $this->setStatusCode(401)->withError($message, static::CODE_UNAUTHORIZED, $headers);
     }
 
     /**
@@ -227,7 +227,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorWrongArgs($message = 'Wrong Arguments', array $headers = [])
     {
-        return $this->setStatusCode(400)->withError($message, self::CODE_WRONG_ARGS, $headers);
+        return $this->setStatusCode(400)->withError($message, static::CODE_WRONG_ARGS, $headers);
     }
 
     /**
@@ -239,7 +239,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorGone($message = 'Resource No Longer Available', array $headers = [])
     {
-        return $this->setStatusCode(410)->withError($message, self::CODE_GONE, $headers);
+        return $this->setStatusCode(410)->withError($message, static::CODE_GONE, $headers);
     }
 
     /**
@@ -251,7 +251,7 @@ abstract class AbstractResponse implements Response
      */
     public function errorMethodNotAllowed($message = 'Method Not Allowed', array $headers = [])
     {
-        return $this->setStatusCode(405)->withError($message, self::CODE_METHOD_NOT_ALLOWED, $headers);
+        return $this->setStatusCode(405)->withError($message, static::CODE_METHOD_NOT_ALLOWED, $headers);
     }
 
     /**
@@ -263,6 +263,6 @@ abstract class AbstractResponse implements Response
      */
     public function errorUnwillingToProcess($message = 'Server is unwilling to process the request', array $headers = [])
     {
-        return $this->setStatusCode(431)->withError($message, self::CODE_UNWILLING_TO_PROCESS, $headers);
+        return $this->setStatusCode(431)->withError($message, static::CODE_UNWILLING_TO_PROCESS, $headers);
     }
 }

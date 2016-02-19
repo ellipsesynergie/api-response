@@ -287,6 +287,9 @@ class BookController extends Controller {
 $ phpunit
 ```
 
+Contributing
+
+Please see CONTRIBUTING for details.
 
 ## Credits
 

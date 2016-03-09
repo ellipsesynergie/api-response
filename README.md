@@ -48,6 +48,21 @@ $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
 
 You also need to uncomment the line `$app->withFacades();` in the file `bootstrap/app.php`
 
+#### Install in Zend Framework 2
+In your module.config.php add the following factory to your service manager.
+
+```php
+'apiResponse' => '\EllipseSynergie\ApiResponse\ZF2\ResponseFactory'
+```
+
+And then in your controller, access the response object by calling
+
+```php
+$response = $this->getServiceLocator()->get('apiResponse');
+```
+
+Note that pagination support is not yet available.
+
 #### Install in your favorite framework or vanilla php
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.

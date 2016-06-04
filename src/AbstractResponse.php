@@ -36,6 +36,9 @@ abstract class AbstractResponse implements Response
     const CODE_METHOD_NOT_ALLOWED = 'GEN-METHOD-NOT-ALLOWED';
 
     const CODE_UNWILLING_TO_PROCESS = 'GEN-UNWILLING-TO-PROCESS';
+    
+    const CODE_UNPROCESSABLE = 'GEN-UNPROCESSABLE';
+    
 
     /**
      * HTTP Status code
@@ -264,5 +267,17 @@ abstract class AbstractResponse implements Response
     public function errorUnwillingToProcess($message = 'Server is unwilling to process the request', array $headers = [])
     {
         return $this->setStatusCode(431)->withError($message, static::CODE_UNWILLING_TO_PROCESS, $headers);
+    }
+    
+    /**
+     * Generates a Response with a 422 HTTP header and a given message.
+     *
+     * @param string $message
+     * @param array  $headers
+     * @return mixed
+     */
+    public function errorUnprocessable($message = 'Unprocessable Entity', array $headers = [])
+    {
+        return $this->setStatusCode(422)->withError($message, static::CODE_UNPROCESSABLE, $headers);
     }
 }

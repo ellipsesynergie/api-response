@@ -35,6 +35,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $paginator->shouldReceive('perPage')->andReturn(1);
         $paginator->shouldReceive('url')->andReturn('localhost');
         $paginator->shouldReceive('count')->andReturn(3);
+        $paginator->shouldReceive('appends')->andReturn([['foo' => 'bar']]);
 
         $response = new ResponseFake(new Manager());
 

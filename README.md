@@ -6,6 +6,7 @@
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/ellipsesynergie/api-response.svg?style=flat-square)](https://scrutinizer-ci.com/g/ellipsesynergie/api-response/code-structure)
 [![Quality Score](https://img.shields.io/scrutinizer/g/ellipsesynergie/api-response.svg?style=flat-square)](https://scrutinizer-ci.com/g/ellipsesynergie/api-response)
 [![Total Downloads](https://img.shields.io/packagist/dt/ellipsesynergie/api-response.svg?style=flat-square)](https://packagist.org/packages/ellipsesynergie/api-response)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5/mini.png)](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5)
 
 Simple package to handle response properly in your API. This package use [Fractal](https://github.com/thephpleague/fractal)
 and are based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-wont-hate) book.

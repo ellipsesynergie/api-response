@@ -209,9 +209,9 @@ class BookController extends Controller {
 
 ```
 
-##Ouput example
+## Ouput example
 
-###One book
+### One book
 ```json
 {
     "data": {
@@ -232,7 +232,7 @@ class BookController extends Controller {
 }
 ```
 
-###Collection of books
+### Collection of books
 ```json
 {
     "data": [
@@ -270,7 +270,7 @@ class BookController extends Controller {
 }
 ```
 
-###Error
+### Error
 ```json
 {
     "error": {

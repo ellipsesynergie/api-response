@@ -11,6 +11,7 @@
             <exclude>
                 <file>src/Laravel/ResponseServiceProvider.php</file>
                 <file>src/Laravel/LumenServiceProvider.php</file>
+                <file>src/Testing/Laravel/AddTestingSupportForInclude.php</file>
             </exclude>
         </whitelist>
     </filter>

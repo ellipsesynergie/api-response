@@ -8,6 +8,7 @@ use EllipseSynergie\ApiResponse\AbstractResponse;
  * Class ResponseFaker
  *
  * @package EllipseSynergie\ApiResponse\Tests
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class ResponseFaker extends AbstractResponse
 {

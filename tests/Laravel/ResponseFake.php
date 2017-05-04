@@ -4,6 +4,11 @@ namespace EllipseSynergie\ApiResponse\Tests\Laravel;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 
+/**
+ * Class ResponseFake
+ * @package EllipseSynergie\ApiResponse\Tests\Laravel
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ */
 class ResponseFake extends \EllipseSynergie\ApiResponse\Laravel\Response
 {
     /**

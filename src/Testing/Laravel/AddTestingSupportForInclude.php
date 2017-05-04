@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 /**
  * Class AddTestingSupportForInclude
  * @package EllipseSynergie\ApiResponse\Testing\Laravel
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 trait AddTestingSupportForInclude
 {

@@ -6,6 +6,8 @@ use League\Fractal\Serializer\ArraySerializer;
 
 /**
  * Class Serializer
+ * @package EllipseSynergie\ApiResponse\Serializer
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class Serializer extends ArraySerializer
 {

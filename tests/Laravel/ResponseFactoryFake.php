@@ -2,9 +2,13 @@
 
 namespace EllipseSynergie\ApiResponse\Tests\Laravel;
 
+/**
+ * Class ResponseFactoryFake
+ * @package EllipseSynergie\ApiResponse\Tests\Laravel
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ */
 class ResponseFactoryFake implements \Illuminate\Contracts\Routing\ResponseFactory
 {
-
     /**
      * Return a new response from the application.
      *

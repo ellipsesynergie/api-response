@@ -8,6 +8,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Class SerializerTest
  * @package EllipseSynergie\ApiResponse\Tests\Serializer
+ * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class SerializerTest extends PHPUnit_Framework_TestCase
 {

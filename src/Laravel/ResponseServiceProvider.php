@@ -2,6 +2,7 @@
 
 namespace EllipseSynergie\ApiResponse\Laravel;
 
+use EllipseSynergie\ApiResponse\Serializer\Serializer;
 use Illuminate\Support\ServiceProvider;
 use League\Fractal\Manager;
 
@@ -36,10 +37,8 @@ class ResponseServiceProvider extends ServiceProvider
     {
         $manager = new Manager;
 
-        // If you have to customize the manager instance, like setting a custom serializer,
-        // I strongly suggest you to create your own service provider and add you manager configuration action here
-        // Here some example if you want to set a custom serializer :
-        // $manager->setSerializer(\League\Fractal\Serializer\JsonApiSerializer);
+        // Custom serializer because DataArraySerializer doesn't provide the opportunity to change the resource key
+        $manager->setSerializer(new Serializer());
 
         // Are we going to try and include embedded data?
         $manager->parseIncludes(explode(',', $this->app['Illuminate\Http\Request']->get('include')));
@@ -71,7 +70,7 @@ class ResponseServiceProvider extends ServiceProvider
      */
     private function registerMacro($response)
     {
-        \Response::macro('api', function() use ($response){
+        \Response::macro('api', function () use ($response) {
             return $response;
         });
     }

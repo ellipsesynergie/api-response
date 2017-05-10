@@ -47,6 +47,25 @@ Register this service provider to your `bootstrap/app.php` file.
 $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
 ```
 
+#### Install in Lumen 5.4+
+
+Because of the request object change ([see reference](https://laravel-news.com/request-object-changes-in-lumen-5-4)) you can't no longuer access Request object properly in Service provider. To be convenient, we have created a middleware to be use for parsing include parameter.
+
+Register this service provider to your `bootstrap/app.php` file.
+
+
+```php
+$app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
+```
+
+Register the global middleware `bootstrap/app.php` file.
+
+```php
+$app->middleware([
+    'EllipseSynergie\ApiResponse\Laravel\Middleware\ParseInclude'
+]);
+```
+
 #### Install in your favorite framework or vanilla php
 This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.

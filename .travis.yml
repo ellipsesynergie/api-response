@@ -10,7 +10,6 @@ matrix:
       env: COLLECT_COVERAGE=true
     - php: 7.0
     - php: 7.1
-    - php: hhvm
 
 install:
   - travis_retry composer install --no-interaction --prefer-source

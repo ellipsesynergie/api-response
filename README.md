@@ -28,7 +28,6 @@ The following versions of PHP are supported by this version.
 * PHP 5.6
 * PHP 7.0
 * PHP 7.1
-* HHVM
 
 #### Install in Laravel 4
 Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version. 

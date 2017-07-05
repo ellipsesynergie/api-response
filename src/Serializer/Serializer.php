@@ -11,6 +11,8 @@ use League\Fractal\Serializer\ArraySerializer;
  */
 class Serializer extends ArraySerializer
 {
+    const RESOURCE_KEY = 'data';
+
     /**
      * Serialize a collection.
      *
@@ -21,7 +23,7 @@ class Serializer extends ArraySerializer
      */
     public function collection($resourceKey, array $data)
     {
-        return [$resourceKey ? $resourceKey: 'data' => $data];
+        return [$resourceKey ? $resourceKey: static::RESOURCE_KEY => $data];
     }
 
     /**
@@ -34,6 +36,6 @@ class Serializer extends ArraySerializer
      */
     public function item($resourceKey, array $data)
     {
-        return [$resourceKey ? $resourceKey: 'data' => $data];
+        return [$resourceKey ? $resourceKey: static::RESOURCE_KEY => $data];
     }
 }

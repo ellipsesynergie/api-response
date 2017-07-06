@@ -19,7 +19,8 @@ class ParseIncludeTest extends \PHPUnit_Framework_TestCase
 
         $request = Request::create('foo', 'GET', ['include' => 'foo,bar']);
 
-        $result = $middleware->handle($request, function () {
+        $result = $middleware->handle($request, function (Request $request) {
+            $this->assertInstanceOf(Request::class, $request);
             return 'callback working !';
         });
 

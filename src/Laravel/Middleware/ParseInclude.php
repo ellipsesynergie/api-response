@@ -38,6 +38,6 @@ class ParseInclude
         // Are we going to try and include embedded data?
         $this->response->getManager()->parseIncludes(explode(',', $request->get('include')));
 
-        return $next($next);
+        return $next($request);
     }
 }

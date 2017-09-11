@@ -98,8 +98,10 @@ abstract class AbstractResponse implements Response
      *
      * @param array $array
      * @param array $headers
+     * @param int $json_options  @link http://php.net/manual/en/function.json-encode.php
+     * @return
      */
-    abstract public function withArray(array $array, array $headers = []);
+    abstract public function withArray(array $array, array $headers = [], $json_options = 0);
 
     /**
      * Response for one item

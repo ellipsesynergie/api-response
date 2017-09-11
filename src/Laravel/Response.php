@@ -23,11 +23,12 @@ class Response extends AbstractResponse
     /**
      * @param array $array
      * @param array $headers
+     * @param int $json_options @link http://php.net/manual/en/function.json-encode.php
      * @return ResponseFactory
      */
-    public function withArray(array $array, array $headers = [])
+    public function withArray(array $array, array $headers = [], $json_options = 0)
     {
-        return response()->json($array, $this->statusCode, $headers);
+        return response()->json($array, $this->statusCode, $headers, $json_options);
     }
 
     /**

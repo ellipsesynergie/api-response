@@ -41,8 +41,10 @@ interface Response
      *
      * @param array $array
      * @param array $headers
+     * @param $json_options @link http://php.net/manual/en/function.json-encode.php
+     * @return
      */
-    public function withArray(array $array, array $headers = []);
+    public function withArray(array $array, array $headers = [], $json_options = 0);
 
     /**
      * Response for one item

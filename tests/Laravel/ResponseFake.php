@@ -14,9 +14,10 @@ class ResponseFake extends \EllipseSynergie\ApiResponse\Laravel\Response
     /**
      * @param array $array
      * @param array $headers
+     * @param int $json_options
      * @return ResponseFactory
      */
-    public function withArray(array $array, array $headers = array())
+    public function withArray(array $array, array $headers = array(), $json_options = 0)
     {
         return (new ResponseFactoryFake())->json($array);
     }

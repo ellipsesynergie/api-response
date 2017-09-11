@@ -15,8 +15,10 @@ class ResponseFaker extends AbstractResponse
     /**
      * @param array $array
      * @param array $headers
+     * @param int $json_options
+     * @return array
      */
-    public function withArray(array $array, array $headers = array())
+    public function withArray(array $array, array $headers = array(), $json_options = 0)
     {
         $response = [
             'status' => $this->statusCode,

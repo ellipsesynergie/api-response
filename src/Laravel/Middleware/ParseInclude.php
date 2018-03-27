@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
  * Class ParseInclude
  * @package EllipseSynergie\ApiResponse\Laravel\Middleware
  */
-class ParseInclude 
+class ParseInclude
 {
     /**
      * @var Response
@@ -30,7 +30,7 @@ class ParseInclude
      * Handle middleware
      *
      * @param Request $request
-     * @param callable $next
+     * @param Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

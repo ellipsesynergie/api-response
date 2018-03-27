@@ -40,5 +40,8 @@
         "branch-alias": {
           "dev-master": "0.16-dev"
         }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit --colors=always"
     }
 }

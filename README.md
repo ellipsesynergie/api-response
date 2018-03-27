@@ -1,4 +1,4 @@
-### Status
+# api-response
 
 [![Latest Version](https://img.shields.io/github/release/ellipsesynergie/api-response.svg?style=flat-square)](https://github.com/ellipsesynergie/api-response/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -8,8 +8,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ellipsesynergie/api-response.svg?style=flat-square)](https://packagist.org/packages/ellipsesynergie/api-response)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5/mini.png)](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5)
 
-Simple package to handle response properly in your API. This package use [Fractal](https://github.com/thephpleague/fractal)
-and are based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-wont-hate) book.
+Simple package to handle response properly in your API. This package uses [Fractal](https://github.com/thephpleague/fractal)
+and is based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-wont-hate) book.
 
 ## Install
 
@@ -29,30 +29,31 @@ The following versions of PHP are supported by this version.
 * PHP 7.0
 * PHP 7.1
 
-#### Install in Laravel 4
+### Install in Laravel 4
+
 Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version. 
 However, you can use the version `0.8.*` if you need to use it inside Laravel 4.
 
-#### Install in Laravel 5
+### Install in Laravel 5
 Add this following service provider to your `config/app.php` file.
 
 ```php
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
 ```
 
-#### Install in Lumen 5
+### Install in Lumen 5
+
 Register this service provider to your `bootstrap/app.php` file.
 
 ```php
 $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
 ```
 
-#### Install in Lumen 5.4+
+### Install in Lumen 5.4+
 
-Because of the request object change ([see reference](https://laravel-news.com/request-object-changes-in-lumen-5-4)) you can't no longuer access Request object properly in Service provider. To be convenient, we have created a middleware to be use for parsing include parameter.
+Because of the request object change ([see reference](https://laravel-news.com/request-object-changes-in-lumen-5-4)) you can no longer access `Request` object properly in Service provider. To be convenient, we have created a middleware to be used for parsing the `include` parameter.
 
 Register this service provider to your `bootstrap/app.php` file.
-
 
 ```php
 $app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
@@ -66,15 +67,16 @@ $app->middleware([
 ]);
 ```
 
-#### Install in your favorite framework or vanilla php
-This package can be used in ANY framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
-You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for a example.
+### Install in your favorite framework or vanilla php
 
-If you have created a new implementation for a specific framework, i strongly recommend you to send a pull request to this repository.
+This package can be used in _any_ framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
+You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for an example.
+
+If you have created a new implementation for a specific framework, I strongly recommend you to send a pull request to this repository.
 
 You will also need to instantiate the response class with a fractal manager instance.
-```php
 
+```php
 // Instantiate the fractal manager
 $manager = new \League\Fractal\Manager;
 
@@ -85,11 +87,11 @@ $manager->parseIncludes(explode(',', $_GET['include']));
 $response = new \EllipseSynergie\ApiResponse\AbstractResponse($manager);
 ```
 
-For more option related to fractal manager, you can take a look at the [official website](http://fractal.thephpleague.com)
+For more options related to the fractal manager, you can take a look at the [official Fractal website](http://fractal.thephpleague.com)
 
 ## Example inside Laravel or Lumen controller
 
-``` php
+```php
 <?php
 
 use EllipseSynergie\ApiResponse\Contracts\Response;
@@ -97,7 +99,7 @@ use EllipseSynergie\ApiResponse\Contracts\Response;
 class BookController extends Controller {
 
     /**
-     * @param Response
+     * @param Response $response
      */
     public function __construct(Response $response)
     {
@@ -225,12 +227,12 @@ class BookController extends Controller {
         return $this->response->errorMethodNotAllowed("Please don't try this again !");
     }
 }
-
 ```
 
 ## Ouput example
 
 ### One book
+
 ```json
 {
     "data": {
@@ -252,6 +254,7 @@ class BookController extends Controller {
 ```
 
 ### Collection of books
+
 ```json
 {
     "data": [
@@ -308,7 +311,8 @@ $ phpunit
 ```
 
 ## Testing within Laravel
-According to the issue #31, we have found some problem when it's time to test the include query parameter value.
+
+According to the issue #31, we have found some problem when it's time to test the `include` query parameter value.
 If you want to resolve this issue in your test, you must use the trait `EllipseSynergie\ApiResponse\Testing\Laravel\AddTestingSupportForInclude`. To replace the `call` method from `Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::call`
 
 ## Contributing

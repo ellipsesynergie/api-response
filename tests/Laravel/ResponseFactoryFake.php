@@ -161,4 +161,18 @@ class ResponseFactoryFake implements \Illuminate\Contracts\Routing\ResponseFacto
     {
         // TODO: Implement redirectToIntended() method.
     }
+
+    /**
+     * Return a new streamed response as a file download from the application.
+     *
+     * @param  \Closure $callback
+     * @param  string|null $name
+     * @param  array $headers
+     * @param  string|null $disposition
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function streamDownload($callback, $name = null, array $headers = [], $disposition = 'attachment')
+    {
+        // TODO: Implement streamDownload() method.
+    }
 }

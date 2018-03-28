@@ -29,16 +29,26 @@ class ResponseServiceProvider extends ServiceProvider
     }
 
     /**
+     * Override this to use your own serializer.
+     *
+     * @return Serializer
+     */
+    protected function getSerializer()
+    {
+        return new Serializer();
+    }
+
+    /**
      * Boot response
      *
      * @return Response
      */
-    private function bootResponse()
+    protected function bootResponse()
     {
         $manager = new Manager;
 
         // Custom serializer because DataArraySerializer doesn't provide the opportunity to change the resource key
-        $manager->setSerializer(new Serializer());
+        $manager->setSerializer($this->getSerializer());
 
         // Are we going to try and include embedded data?
         $manager->parseIncludes(explode(',', $this->app['Illuminate\Http\Request']->get('include')));

@@ -8,7 +8,7 @@ use Mockery as m;
 /**
  * Class ResponseTest
  *
- * @package EllipseSynergie\ApiResponse\Tests
+ * @package EllipseSynergie\ApiResponse\Tests\Laravel
  * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
 class ResponseTest extends \PHPUnit_Framework_TestCase

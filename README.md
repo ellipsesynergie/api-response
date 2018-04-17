@@ -38,7 +38,7 @@ However, you can use the version `0.8.*` if you need to use it inside Laravel 4.
 Add this following service provider to your `config/app.php` file.
 
 ```php
-EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider
+EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class
 ```
 
 ### Install in Lumen 5

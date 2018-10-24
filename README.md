@@ -72,8 +72,6 @@ $app->middleware([
 This package can be used in _any_ framework or vanilla php. You simply need to extend `EllipseSynergie\ApiResponse\AbstractResponse` and implement the `withArray()` method in your custom class.
 You can take a look at `EllipseSynergie\ApiResponse\Laravel\Response::withArray()` for an example.
 
-If you have created a new implementation for a specific framework, I strongly recommend you to send a pull request to this repository.
-
 You will also need to instantiate the response class with a fractal manager instance.
 
 ```php
@@ -312,7 +310,7 @@ $ phpunit
 
 ## Testing within Laravel
 
-According to the issue #31, we have found some problem when it's time to test the `include` query parameter value.
+According to the issue [#31](https://github.com/ellipsesynergie/api-response/issues/31), we have found some problem when it's time to test the `include` query parameter value.
 If you want to resolve this issue in your test, you must use the trait `EllipseSynergie\ApiResponse\Testing\Laravel\AddTestingSupportForInclude`. To replace the `call` method from `Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::call`
 
 ## Contributing

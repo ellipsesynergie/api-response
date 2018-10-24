@@ -175,4 +175,16 @@ class ResponseFactoryFake implements \Illuminate\Contracts\Routing\ResponseFacto
     {
         // TODO: Implement streamDownload() method.
     }
+
+    /**
+     * Create a new "no content" response.
+     *
+     * @param  int $status
+     * @param  array $headers
+     * @return \Illuminate\Http\Response
+     */
+    public function noContent($status = 204, array $headers = [])
+    {
+        // TODO: Implement noContent() method.
+    }
 }

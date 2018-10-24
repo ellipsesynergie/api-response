@@ -23,11 +23,10 @@ $ composer require ellipsesynergie/api-response
 
 The following versions of PHP are supported by this version.
 
-* PHP 5.4
-* PHP 5.5
 * PHP 5.6
 * PHP 7.0
 * PHP 7.1
+* PHP 7.2
 
 ### Install in Laravel 4
 

@@ -194,4 +194,11 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             ]
         ], $response);
     }
+
+    public function testResponseWithArrayContainsArray()
+    {
+        $response = $this->response ->withArray(['test' => 'array']);
+
+        $this->assertSame('array', $response['test']);
+    }
 }

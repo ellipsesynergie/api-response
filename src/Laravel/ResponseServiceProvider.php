@@ -50,8 +50,16 @@ class ResponseServiceProvider extends ServiceProvider
         // Custom serializer because DataArraySerializer doesn't provide the opportunity to change the resource key
         $manager->setSerializer($this->getSerializer());
 
+        //Get includes from request
+        $includes = $this->app['Illuminate\Http\Request']->get('include');
+
+        //If includes is not already a array
+        if(!is_array($includes)){
+            $includes = explode(',', $includes);
+        }
+
         // Are we going to try and include embedded data?
-        $manager->parseIncludes(explode(',', $this->app['Illuminate\Http\Request']->get('include')));
+        $manager->parseIncludes($includes);
 
         // Return the Response object
         $response = new Response($manager);

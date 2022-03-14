@@ -6,6 +6,7 @@ use EllipseSynergie\ApiResponse\Tests\Laravel\ResponseFake;
 use EllipseSynergie\ApiResponse\Tests\ResponseFaker as Response;
 use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ResponseTest
@@ -13,14 +14,14 @@ use League\Fractal\Pagination\Cursor;
  * @package EllipseSynergie\ApiResponse\Tests
  * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends TestCase
 {
     /**
      * @var Response
      */
     protected $response;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->response = new Response(new Manager());
     }

@@ -4,6 +4,7 @@ namespace EllipseSynergie\ApiResponse\Tests\Laravel;
 
 use League\Fractal\Manager;
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ResponseTest
@@ -11,7 +12,7 @@ use Mockery as m;
  * @package EllipseSynergie\ApiResponse\Tests\Laravel
  * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends TestCase
 {
     public function testErrorWrongArgsValidator()
     {
@@ -23,6 +24,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $response = new ResponseFake(new Manager());
 
         $response->errorWrongArgsValidator($validator);
+
+        $this->assertSame(400, $response->getStatusCode());
     }
 
     public function testWithPaginatorWorkProperly()
@@ -60,7 +63,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

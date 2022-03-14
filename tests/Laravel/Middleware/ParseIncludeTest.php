@@ -6,8 +6,9 @@ use EllipseSynergie\ApiResponse\Laravel\Middleware\ParseInclude;
 use EllipseSynergie\ApiResponse\Laravel\Response;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
+use PHPUnit\Framework\TestCase;
 
-class ParseIncludeTest extends \PHPUnit_Framework_TestCase
+class ParseIncludeTest extends TestCase
 {
     public function testHandleWorkProperly()
     {
@@ -25,7 +26,7 @@ class ParseIncludeTest extends \PHPUnit_Framework_TestCase
         });
 
         $includes = $response->getManager()->getRequestedIncludes();
-        
+
         $this->assertSame($manager, $response->getManager());
         $this->assertSame([
             'foo',

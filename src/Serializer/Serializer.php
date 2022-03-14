@@ -23,7 +23,7 @@ class Serializer extends ArraySerializer
      */
     public function collection(string $resourceKey, array $data): array
     {
-        if (is_null($resourceKey)) $resourceKey = static::RESOURCE_KEY;
+        if (empty($resourceKey)) $resourceKey = static::RESOURCE_KEY;
         return $resourceKey ? [$resourceKey => $data]: $data;
     }
 
@@ -37,7 +37,7 @@ class Serializer extends ArraySerializer
      */
     public function item(string $resourceKey, array $data): array
     {
-        if (is_null($resourceKey)) $resourceKey = static::RESOURCE_KEY;
+        if (empty($resourceKey)) $resourceKey = static::RESOURCE_KEY;
         return $resourceKey ? [$resourceKey => $data]: $data;
     }
 }

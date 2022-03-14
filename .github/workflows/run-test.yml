@@ -1,0 +1,25 @@
+name: Api Response Tests
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-20.04]
+        php: [7.4, 8.0, 8.1]
+
+    name: League - PHP ${{ matrix.php }} on ${{ matrix.os }}
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download dependencies
+        uses: ramsey/composer-install@v2
+
+      - name: Run Tests
+        run: composer test

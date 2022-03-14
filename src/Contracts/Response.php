@@ -49,7 +49,7 @@ interface Response
     /**
      * Response for one item
      *
-     * @param $data
+     * @param mixed $data
      * @param callable|\League\Fractal\TransformerAbstract $transformer
      * @param string $resourceKey
      * @param array $meta
@@ -61,7 +61,7 @@ interface Response
     /**
      * Response for collection of items
      *
-     * @param $data
+     * @param mixed $data
      * @param callable|\League\Fractal\TransformerAbstract $transformer
      * @param string $resourceKey
      * @param Cursor $cursor
@@ -69,7 +69,14 @@ interface Response
      * @param array $headers
      * @return mixed
      */
-    public function withCollection($data, $transformer, $resourceKey = null, Cursor $cursor = null, $meta = [], array $headers = []);
+    public function withCollection(
+        $data,
+        $transformer,
+        $resourceKey = null,
+        Cursor $cursor = null,
+        $meta = [],
+        array $headers = []
+    );
 
     /**
      * Response for errors
@@ -153,4 +160,3 @@ interface Response
      */
     public function errorUnwillingToProcess($message, array $headers = []);
 }
-

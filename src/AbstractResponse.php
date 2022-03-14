@@ -20,25 +20,16 @@ use League\Fractal\Pagination\Cursor;
  */
 abstract class AbstractResponse implements Response
 {
+    public const CODE_WRONG_ARGS = 'GEN-WRONG-ARGS';
+    public const CODE_NOT_FOUND = 'GEN-NOT-FOUND';
+    public const CODE_INTERNAL_ERROR = 'GEN-INTERNAL-ERROR';
+    public const CODE_UNAUTHORIZED = 'GEN-UNAUTHORIZED';
+    public const CODE_FORBIDDEN = 'GEN-FORBIDDEN';
+    public const CODE_GONE = 'GEN-GONE';
+    public const CODE_METHOD_NOT_ALLOWED = 'GEN-METHOD-NOT-ALLOWED';
+    public const CODE_UNWILLING_TO_PROCESS = 'GEN-UNWILLING-TO-PROCESS';
+    public const CODE_UNPROCESSABLE = 'GEN-UNPROCESSABLE';
 
-    const CODE_WRONG_ARGS = 'GEN-WRONG-ARGS';
-
-    const CODE_NOT_FOUND = 'GEN-NOT-FOUND';
-
-    const CODE_INTERNAL_ERROR = 'GEN-INTERNAL-ERROR';
-
-    const CODE_UNAUTHORIZED = 'GEN-UNAUTHORIZED';
-
-    const CODE_FORBIDDEN = 'GEN-FORBIDDEN';
-
-    const CODE_GONE = 'GEN-GONE';
-
-    const CODE_METHOD_NOT_ALLOWED = 'GEN-METHOD-NOT-ALLOWED';
-
-    const CODE_UNWILLING_TO_PROCESS = 'GEN-UNWILLING-TO-PROCESS';
-    
-    const CODE_UNPROCESSABLE = 'GEN-UNPROCESSABLE';
-    
 
     /**
      * HTTP Status code
@@ -99,14 +90,14 @@ abstract class AbstractResponse implements Response
      * @param array $array
      * @param array $headers
      * @param int $json_options  @link http://php.net/manual/en/function.json-encode.php
-     * @return
+     * @return mixed
      */
     abstract public function withArray(array $array, array $headers = [], $json_options = 0);
 
     /**
      * Response for one item
      *
-     * @param $data
+     * @param mixed $data
      * @param callable|\League\Fractal\TransformerAbstract $transformer
      * @param string $resourceKey
      * @param array $meta
@@ -129,7 +120,7 @@ abstract class AbstractResponse implements Response
     /**
      * Response for collection of items
      *
-     * @param $data
+     * @param mixed $data
      * @param callable|\League\Fractal\TransformerAbstract $transformer
      * @param string $resourceKey
      * @param Cursor $cursor
@@ -137,8 +128,14 @@ abstract class AbstractResponse implements Response
      * @param array $headers
      * @return mixed
      */
-    public function withCollection($data, $transformer, $resourceKey = null, Cursor $cursor = null, $meta = [], array $headers = [])
-    {
+    public function withCollection(
+        $data,
+        $transformer,
+        $resourceKey = null,
+        Cursor $cursor = null,
+        $meta = [],
+        array $headers = []
+    ) {
         $resource = new Collection($data, $transformer, $resourceKey);
 
         foreach ($meta as $metaKey => $metaValue) {
@@ -164,7 +161,8 @@ abstract class AbstractResponse implements Response
      */
     public function withError($message, $errorCode, array $headers = [])
     {
-        return $this->withArray([
+        return $this->withArray(
+            [
                 'error' => [
                     'code' => $errorCode,
                     'http_code' => $this->statusCode,
@@ -270,7 +268,7 @@ abstract class AbstractResponse implements Response
     {
         return $this->setStatusCode(431)->withError($message, static::CODE_UNWILLING_TO_PROCESS, $headers);
     }
-    
+
     /**
      * Generates a Response with a 422 HTTP header and a given message.
      *

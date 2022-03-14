@@ -44,7 +44,7 @@ class Response extends AbstractResponse
     {
         $queryParams = array_diff_key($_GET, array_flip(['page']));
         $paginator->appends($queryParams);
-        
+
         $resource = new Collection($paginator->items(), $transformer, $resourceKey);
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
 

@@ -4,11 +4,9 @@ sudo: false
 
 matrix:
   include:
-    - php: 5.6
-      env: COLLECT_COVERAGE=true
-    - php: 7.0
-    - php: 7.1
-    - php: 7.2
+    - php: 7.4
+    - php: 8.0
+    - php: 8.1
 
 install:
   - travis_retry composer install --no-interaction --prefer-source

@@ -22,4 +22,4 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Run Tests
-        run: composer test
+        run: composer test -- --coverage-text

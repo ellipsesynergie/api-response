@@ -2,7 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/release/ellipsesynergie/api-response.svg?style=flat-square)](https://github.com/ellipsesynergie/api-response/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-![Api Response Tests](https://github.com/thephpleague/fractal/workflows/Api%Response%20Tests/badge.svg)
+![Api Response Tests](https://github.com/ellipsesynergie/api-response/workflows/Api%Response%20Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/ellipsesynergie/api-response.svg?style=flat-square)](https://packagist.org/packages/ellipsesynergie/api-response)
 
 Simple package to handle response properly in your API. This package uses [Fractal](https://github.com/thephpleague/fractal)

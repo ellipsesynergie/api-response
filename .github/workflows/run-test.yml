@@ -11,12 +11,18 @@ jobs:
         os: [ubuntu-20.04]
         php: [7.4, 8.0, 8.1]
 
-    name: League - PHP ${{ matrix.php }} on ${{ matrix.os }}
+    name: PHP ${{ matrix.php }} on ${{ matrix.os }}
 
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: phpunit
 
       - name: Download dependencies
         uses: ramsey/composer-install@v2

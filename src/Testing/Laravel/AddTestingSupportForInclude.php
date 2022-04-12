@@ -33,8 +33,13 @@ trait AddTestingSupportForInclude
         $this->resetPageContext();
 
         $symfonyRequest = SymfonyRequest::create(
-            $this->currentUri, $method, $parameters,
-            $cookies, $this->filterFiles($files), array_replace($this->serverVariables, $server), $content
+            $this->currentUri,
+            $method,
+            $parameters,
+            $cookies,
+            $this->filterFiles($files),
+            array_replace($this->serverVariables, $server),
+            $content
         );
 
         $request = Request::createFromBase($symfonyRequest);

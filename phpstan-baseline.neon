@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function response not found\\.$#"
+			count: 1
+			path: src/Laravel/Response.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of method EllipseSynergie\\\\ApiResponse\\\\AbstractResponse\\:\\:errorWrongArgs\\(\\) expects string, array given\\.$#"
+			count: 1
+			path: src/Laravel/Response.php
+
+		-
+			message: "#^Call to static method macro\\(\\) on an unknown class Response\\.$#"
+			count: 1
+			path: src/Laravel/ResponseServiceProvider.php
+

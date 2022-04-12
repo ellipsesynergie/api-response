@@ -3,20 +3,20 @@
 namespace EllipseSynergie\ApiResponse\Tests\Serializer;
 
 use EllipseSynergie\ApiResponse\Serializer\Serializer;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SerializerTest
  * @package EllipseSynergie\ApiResponse\Tests\Serializer
  * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
  */
-class SerializerTest extends PHPUnit_Framework_TestCase
+class SerializerTest extends TestCase
 {
     public function testCollectionWithDefaultResourceKey()
     {
         $data = ['foo'];
         $serializer = new Serializer();
-        $result = $serializer->collection(null, $data);
+        $result = $serializer->collection('', $data);
 
         $this->assertSame(['data' => $data], $result);
     }
@@ -34,7 +34,7 @@ class SerializerTest extends PHPUnit_Framework_TestCase
     {
         $data = ['foo'];
         $serializer = new OptionalKeySerializer();
-        $result = $serializer->collection(null, $data);
+        $result = $serializer->collection('', $data);
 
         $this->assertSame($data, $result);
 
@@ -47,7 +47,7 @@ class SerializerTest extends PHPUnit_Framework_TestCase
     {
         $data = ['foo'];
         $serializer = new Serializer();
-        $result = $serializer->item(null, $data);
+        $result = $serializer->item('', $data);
 
         $this->assertSame(['data' => $data], $result);
     }
@@ -65,7 +65,7 @@ class SerializerTest extends PHPUnit_Framework_TestCase
     {
         $data = ['foo'];
         $serializer = new OptionalKeySerializer();
-        $result = $serializer->item(null, $data);
+        $result = $serializer->item('', $data);
 
         $this->assertSame($data, $result);
 

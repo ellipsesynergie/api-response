@@ -2,11 +2,8 @@
 
 [![Latest Version](https://img.shields.io/github/release/ellipsesynergie/api-response.svg?style=flat-square)](https://github.com/ellipsesynergie/api-response/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/ellipsesynergie/api-response.svg?style=flat-square)](https://travis-ci.org/ellipsesynergie/api-response)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/ellipsesynergie/api-response.svg?style=flat-square)](https://scrutinizer-ci.com/g/ellipsesynergie/api-response/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/ellipsesynergie/api-response.svg?style=flat-square)](https://scrutinizer-ci.com/g/ellipsesynergie/api-response)
+![Api Response Tests](https://github.com/ellipsesynergie/api-response/actions/workflows/run-test.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/ellipsesynergie/api-response.svg?style=flat-square)](https://packagist.org/packages/ellipsesynergie/api-response)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5/mini.png)](https://insight.sensiolabs.com/projects/4d91348d-221b-4ee8-97cc-3e26383092c5)
 
 Simple package to handle response properly in your API. This package uses [Fractal](https://github.com/thephpleague/fractal)
 and is based on [Build APIs You Won't Hate](https://leanpub.com/build-apis-you-wont-hate) book.
@@ -21,34 +18,18 @@ $ composer require ellipsesynergie/api-response
 
 ## Requirements
 
-The following versions of PHP are supported by this version.
+The following versions of PHP are supported by this version:
 
-* PHP 5.6
-* PHP 7.0
-* PHP 7.1
-* PHP 7.2
+&gt;= PHP 7.4
 
-### Install in Laravel 4
-
-Unfortunately, since the release 0.9.0, Laravel 4 is no longer supported because `league/fractal@0.12` no longer support this version. 
-However, you can use the version `0.8.*` if you need to use it inside Laravel 4.
-
-### Install in Laravel 5
+### Install in Laravel
 Add this following service provider to your `config/app.php` file.
 
 ```php
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class
 ```
 
-### Install in Lumen 5
-
-Register this service provider to your `bootstrap/app.php` file.
-
-```php
-$app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
-```
-
-### Install in Lumen 5.4+
+### Install in Lumen
 
 Because of the request object change ([see reference](https://laravel-news.com/request-object-changes-in-lumen-5-4)) you can no longer access `Request` object properly in Service provider. To be convenient, we have created a middleware to be used for parsing the `include` parameter.
 

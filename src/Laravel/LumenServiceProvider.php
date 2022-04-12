@@ -23,7 +23,7 @@ class LumenServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $manager = new Manager;
+        $manager = new Manager();
 
         // If you have to customize the manager instance, like setting a custom serializer,
         // I strongly suggest you to create your own service provider and add you manager configuration action here

@@ -42,6 +42,11 @@
     "extra": {
         "branch-alias": {
           "dev-master": "0.21-dev"
+        },
+        "laravel": {
+            "providers": [
+                "EllipseSynergie\\ApiResponse\\Laravel\\ResponseServiceProvider"
+            ]
         }
     },
     "scripts": {

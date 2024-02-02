@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.1",
         "league/fractal": "~0.20.1"
     },
     "require-dev": {

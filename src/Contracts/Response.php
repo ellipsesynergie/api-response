@@ -2,7 +2,10 @@
 
 namespace EllipseSynergie\ApiResponse\Contracts;
 
+use EllipseSynergie\ApiResponse\AbstractResponse;
+use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
+use League\Fractal\TransformerAbstract;
 
 /**
  * Interface Response
@@ -16,24 +19,24 @@ use League\Fractal\Pagination\Cursor;
 interface Response
 {
     /**
-     * @return \League\Fractal\Manager
+     * @return Manager
      */
-    public function getManager();
+    public function getManager(): Manager;
 
     /**
      * Getter for statusCode
      *
      * @return int
      */
-    public function getStatusCode();
+    public function getStatusCode(): int;
 
     /**
      * Setter for status code
      *
      * @param int $statusCode
-     * @return \EllipseSynergie\ApiResponse\AbstractResponse
+     * @return AbstractResponse
      */
-    public function setStatusCode($statusCode);
+    public function setStatusCode(int $statusCode): AbstractResponse;
 
     /**
      * Implement this !!!
@@ -44,27 +47,27 @@ interface Response
      * @param int $json_options @link http://php.net/manual/en/function.json-encode.php
      * @return mixed
      */
-    public function withArray(array $array, array $headers = [], $json_options = 0);
+    public function withArray(array $array, array $headers = [], int $json_options = 0);
 
     /**
      * Response for one item
      *
      * @param mixed $data
-     * @param callable|\League\Fractal\TransformerAbstract $transformer
-     * @param string $resourceKey
+     * @param callable|TransformerAbstract $transformer
+     * @param string|null $resourceKey
      * @param array $meta
      * @param array $headers
      * @return mixed
      */
-    public function withItem($data, $transformer, $resourceKey = null, $meta = [], array $headers = []);
+    public function withItem($data, $transformer, string $resourceKey = null, array $meta = [], array $headers = []);
 
     /**
      * Response for collection of items
      *
      * @param mixed $data
-     * @param callable|\League\Fractal\TransformerAbstract $transformer
-     * @param string $resourceKey
-     * @param Cursor $cursor
+     * @param callable|TransformerAbstract $transformer
+     * @param string|null $resourceKey
+     * @param Cursor|null $cursor
      * @param array $meta
      * @param array $headers
      * @return mixed
@@ -72,9 +75,9 @@ interface Response
     public function withCollection(
         $data,
         $transformer,
-        $resourceKey = null,
+        string $resourceKey = null,
         Cursor $cursor = null,
-        $meta = [],
+        array $meta = [],
         array $headers = []
     );
 
@@ -86,7 +89,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function withError($message, $errorCode, array $headers = []);
+    public function withError(string $message, string $errorCode, array $headers = []);
 
     /**
      * Generates a response with a 403 HTTP header and a given message.
@@ -95,7 +98,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorForbidden($message, array $headers = []);
+    public function errorForbidden(string $message, array $headers = []);
 
     /**
      * Generates a response with a 500 HTTP header and a given message.
@@ -104,7 +107,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorInternalError($message, array $headers = []);
+    public function errorInternalError(string $message, array $headers = []);
 
     /**
      * Generates a response with a 404 HTTP header and a given message.
@@ -113,7 +116,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorNotFound($message, array $headers = []);
+    public function errorNotFound(string $message, array $headers = []);
 
     /**
      * Generates a response with a 401 HTTP header and a given message.
@@ -122,7 +125,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorUnauthorized($message, array $headers = []);
+    public function errorUnauthorized(string $message, array $headers = []);
 
     /**
      * Generates a response with a 400 HTTP header and a given message.
@@ -131,7 +134,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorWrongArgs($message, array $headers = []);
+    public function errorWrongArgs(string $message, array $headers = []);
 
     /**
      * Generates a response with a 410 HTTP header and a given message.
@@ -140,7 +143,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorGone($message, array $headers = []);
+    public function errorGone(string $message, array $headers = []);
 
     /**
      * Generates a response with a 405 HTTP header and a given message.
@@ -149,7 +152,7 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorMethodNotAllowed($message, array $headers = []);
+    public function errorMethodNotAllowed(string $message, array $headers = []);
 
     /**
      * Generates a Response with a 431 HTTP header and a given message.
@@ -158,5 +161,5 @@ interface Response
      * @param array  $headers
      * @return mixed
      */
-    public function errorUnwillingToProcess($message, array $headers = []);
+    public function errorUnwillingToProcess(string $message, array $headers = []);
 }

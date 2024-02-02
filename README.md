@@ -20,7 +20,7 @@ $ composer require ellipsesynergie/api-response
 
 The following versions of PHP are supported by this version:
 
-&gt;= PHP 8.0
+&gt;= PHP 8.1
 
 ### Install in Laravel
 Add this following service provider to your `config/app.php` file.

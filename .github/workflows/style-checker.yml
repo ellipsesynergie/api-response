@@ -18,7 +18,7 @@ jobs:
 
       - name: Cache Dependencies
         id: composer-cache-style
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor
           key: ubuntu-composer-cache-style-${{ hashFiles('**/composer.lock') }}

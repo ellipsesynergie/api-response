@@ -56,7 +56,7 @@ abstract class AbstractResponse implements Response
     /**
      * @return Manager
      */
-    public function getManager() : Manager
+    public function getManager(): Manager
     {
         return $this->manager;
     }

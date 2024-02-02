@@ -15,7 +15,7 @@ use League\Fractal\Pagination\Cursor;
  * file that was distributed with this source code.
  *
  * @package EllipseSynergie\ApiResponse
- * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ * @author Maxime Beaudoin <maxime.beaudoin@optania.com>
  * @author Phil Sturgeon <email@philsturgeon.co.uk>
  */
 abstract class AbstractResponse implements Response

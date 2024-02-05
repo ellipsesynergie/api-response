@@ -14,7 +14,7 @@ use League\Fractal\TransformerAbstract;
  * file that was distributed with this source code.
  *
  * @package EllipseSynergie\ApiResponse\Contracts
- * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ * @author Maxime Beaudoin <maxime.beaudoin@optania.com>
  */
 interface Response
 {

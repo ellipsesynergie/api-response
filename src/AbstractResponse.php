@@ -15,7 +15,7 @@ use League\Fractal\Pagination\Cursor;
  * file that was distributed with this source code.
  *
  * @package EllipseSynergie\ApiResponse
- * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ * @author Maxime Beaudoin <maxime.beaudoin@optania.com>
  * @author Phil Sturgeon <email@philsturgeon.co.uk>
  */
 abstract class AbstractResponse implements Response
@@ -41,12 +41,12 @@ abstract class AbstractResponse implements Response
     /**
      * Fractal manager
      *
-     * @var \League\Fractal\Manager
+     * @var Manager
      */
     protected $manager;
 
     /**
-     * @param \League\Fractal\Manager $manager
+     * @param Manager $manager
      */
     public function __construct(Manager $manager)
     {
@@ -54,9 +54,9 @@ abstract class AbstractResponse implements Response
     }
 
     /**
-     * @return \League\Fractal\Manager
+     * @return Manager
      */
-    public function getManager()
+    public function getManager(): Manager
     {
         return $this->manager;
     }
@@ -66,7 +66,7 @@ abstract class AbstractResponse implements Response
      *
      * @return int
      */
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
         return $this->statusCode;
     }
@@ -75,9 +75,9 @@ abstract class AbstractResponse implements Response
      * Setter for status code
      *
      * @param int $statusCode
-     * @return \EllipseSynergie\ApiResponse\AbstractResponse
+     * @return AbstractResponse
      */
-    public function setStatusCode($statusCode)
+    public function setStatusCode($statusCode): AbstractResponse
     {
         $this->statusCode = $statusCode;
         return $this;

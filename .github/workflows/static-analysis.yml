@@ -4,7 +4,7 @@ name: Static analysis
 jobs:
   phpstan:
     name: PHPStan
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -19,14 +19,14 @@ jobs:
           tools: phpstan:1.4.10
 
       - name: Download dependencies
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
 
       - name: PHPStan
         run: phpstan analyze
 
   psalm:
     name: Psalm
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
           tools: vimeo/psalm:4.22.0
 
       - name: Download dependencies
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
 
       - name: Psalm
         run: psalm --no-progress --output-format=github

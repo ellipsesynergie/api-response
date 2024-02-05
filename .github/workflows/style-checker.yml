@@ -14,11 +14,11 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.1'
 
       - name: Cache Dependencies
         id: composer-cache-style
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor
           key: ubuntu-composer-cache-style-${{ hashFiles('**/composer.lock') }}

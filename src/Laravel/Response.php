@@ -16,7 +16,7 @@ use League\Fractal\Resource\Collection;
  * file that was distributed with this source code.
  *
  * @package EllipseSynergie\ApiResponse\Laravel
- * @author Maxime Beaudoin <maxime.beaudoin@ellipse-synergie.com>
+ * @author Maxime Beaudoin <maxime.beaudoin@optania.com>
  */
 class Response extends AbstractResponse
 {

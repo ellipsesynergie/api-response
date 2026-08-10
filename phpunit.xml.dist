@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit colors="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" bootstrap="vendor/autoload.php">
-    <testsuites>
-        <testsuite name="all">
-            <directory suffix="Test.php">tests/</directory>
-        </testsuite>
-    </testsuites>
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-        <exclude>
-            <file>src/Laravel/ResponseServiceProvider.php</file>
-            <file>src/Laravel/LumenServiceProvider.php</file>
-            <file>src/Testing/Laravel/AddTestingSupportForInclude.php</file>
-        </exclude>
-    </coverage>
+<phpunit colors="true" stopOnError="false" stopOnFailure="false" stopOnIncomplete="false" stopOnSkipped="false" bootstrap="vendor/autoload.php" cacheDirectory=".phpunit.cache">
+  <testsuites>
+    <testsuite name="all">
+      <directory suffix="Test.php">tests/</directory>
+    </testsuite>
+  </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <exclude>
+      <file>src/Laravel/ResponseServiceProvider.php</file>
+      <file>src/Testing/Laravel/AddTestingSupportForInclude.php</file>
+    </exclude>
+  </source>
 </phpunit>

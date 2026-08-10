@@ -3,3 +3,4 @@ build
 vendor
 composer.lock
 coverage
+.phpunit.cache

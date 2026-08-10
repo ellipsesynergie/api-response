@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
-  <file src="src/Laravel/LumenServiceProvider.php">
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>$this-&gt;app</code>
-    </UndefinedInterfaceMethod>
-  </file>
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Laravel/Response.php">
-    <InvalidArgument occurrences="1">
-      <code>$validator-&gt;getMessageBag()-&gt;toArray()</code>
-    </InvalidArgument>
-    <UndefinedFunction occurrences="1">
-      <code>response()</code>
+    <UndefinedFunction>
+      <code><![CDATA[response()]]></code>
     </UndefinedFunction>
   </file>
   <file src="src/Laravel/ResponseServiceProvider.php">
-    <UndefinedClass occurrences="1">
-      <code>\Response</code>
-    </UndefinedClass>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>$this-&gt;app</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[$this->app]]></code>
     </UndefinedInterfaceMethod>
   </file>
 </files>

@@ -18,33 +18,18 @@ $ composer require ellipsesynergie/api-response
 
 ## Requirements
 
-The following versions of PHP are supported by this version:
+| Version | Branch   | PHP       | Laravel |
+|---------|----------|-----------|---------|
+| 2.x     | `master` | 8.3 - 8.5 | 11 - 13 |
+| 1.x     | `1.x`    | 8.1 - 8.3 | 8 - 10  |
 
-&gt;= PHP 8.1
+Version 2.x removed Lumen support, since Lumen is no longer maintained. If you need Lumen, stay on 1.x.
 
 ### Install in Laravel
-Add this following service provider to your `config/app.php` file.
+The service provider is auto-discovered. If you have disabled package discovery, add this following service provider to your `config/app.php` file.
 
 ```php
 EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class
-```
-
-### Install in Lumen
-
-Because of the request object change ([see reference](https://laravel-news.com/request-object-changes-in-lumen-5-4)) you can no longer access `Request` object properly in Service provider. To be convenient, we have created a middleware to be used for parsing the `include` parameter.
-
-Register this service provider to your `bootstrap/app.php` file.
-
-```php
-$app->register('EllipseSynergie\ApiResponse\Laravel\LumenServiceProvider');
-```
-
-Register the global middleware `bootstrap/app.php` file.
-
-```php
-$app->middleware([
-    'EllipseSynergie\ApiResponse\Laravel\Middleware\ParseInclude'
-]);
 ```
 
 ### Install in your favorite framework or vanilla php
@@ -67,7 +52,7 @@ $response = new \EllipseSynergie\ApiResponse\AbstractResponse($manager);
 
 For more options related to the fractal manager, you can take a look at the [official Fractal website](http://fractal.thephpleague.com)
 
-## Example inside Laravel or Lumen controller
+## Example inside Laravel controller
 
 ```php
 <?php

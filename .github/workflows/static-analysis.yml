@@ -4,43 +4,39 @@ name: Static analysis
 jobs:
   phpstan:
     name: PHPStan
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
-          extensions: apcu, redis
+          php-version: 8.4
           coverage: none
-          tools: phpstan:1.4.10
 
       - name: Download dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: PHPStan
-        run: phpstan analyze
+        run: vendor/bin/phpstan analyze --no-progress
 
   psalm:
     name: Psalm
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
-          extensions: apcu, redis
+          php-version: 8.4
           coverage: none
-          tools: vimeo/psalm:4.22.0
 
       - name: Download dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: Psalm
-        run: psalm --no-progress --output-format=github
+        run: vendor/bin/psalm --no-progress --output-format=github

@@ -132,7 +132,7 @@ abstract class AbstractResponse implements Response
         $data,
         $transformer,
         $resourceKey = null,
-        Cursor $cursor = null,
+        ?Cursor $cursor = null,
         $meta = [],
         array $headers = []
     ) {
@@ -154,7 +154,7 @@ abstract class AbstractResponse implements Response
     /**
      * Response for errors
      *
-     * @param string $message
+     * @param string|array $message
      * @param string $errorCode
      * @param array  $headers
      * @return mixed
@@ -224,7 +224,7 @@ abstract class AbstractResponse implements Response
     /**
      * Generates a response with a 400 HTTP header and a given message.
      *
-     * @param string $message
+     * @param string|array $message
      * @param array  $headers
      * @return mixed
      */

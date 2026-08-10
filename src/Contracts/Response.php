@@ -59,7 +59,7 @@ interface Response
      * @param array $headers
      * @return mixed
      */
-    public function withItem($data, $transformer, string $resourceKey = null, array $meta = [], array $headers = []);
+    public function withItem($data, $transformer, ?string $resourceKey = null, array $meta = [], array $headers = []);
 
     /**
      * Response for collection of items
@@ -75,8 +75,8 @@ interface Response
     public function withCollection(
         $data,
         $transformer,
-        string $resourceKey = null,
-        Cursor $cursor = null,
+        ?string $resourceKey = null,
+        ?Cursor $cursor = null,
         array $meta = [],
         array $headers = []
     );
@@ -84,12 +84,12 @@ interface Response
     /**
      * Response for errors
      *
-     * @param string $message
+     * @param string|array $message
      * @param string $errorCode
      * @param array  $headers
      * @return mixed
      */
-    public function withError(string $message, string $errorCode, array $headers = []);
+    public function withError(string|array $message, string $errorCode, array $headers = []);
 
     /**
      * Generates a response with a 403 HTTP header and a given message.
@@ -130,11 +130,11 @@ interface Response
     /**
      * Generates a response with a 400 HTTP header and a given message.
      *
-     * @param string $message
+     * @param string|array $message
      * @param array  $headers
      * @return mixed
      */
-    public function errorWrongArgs(string $message, array $headers = []);
+    public function errorWrongArgs(string|array $message, array $headers = []);
 
     /**
      * Generates a response with a 410 HTTP header and a given message.

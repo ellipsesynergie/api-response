@@ -4,28 +4,34 @@ on: [push, pull_request]
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-22.04]
-        php: [8.1, 8.2, 8.3]
+        php: ['8.3', '8.4', '8.5']
+        laravel: ['^11.0', '^12.0', '^13.0']
+        exclude:
+          # Laravel 11 does not officially support PHP 8.5
+          - php: '8.5'
+            laravel: '^11.0'
 
-    name: PHP ${{ matrix.php }} on ${{ matrix.os }}
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
 
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: phpunit
+
+      - name: Pin Laravel version
+        run: composer require "illuminate/contracts:${{ matrix.laravel }}" "illuminate/http:${{ matrix.laravel }}" --dev --no-update
 
       - name: Download dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: Run Tests
         run: composer test -- --coverage-text

@@ -11,7 +11,6 @@
     </include>
     <exclude>
       <file>src/Laravel/ResponseServiceProvider.php</file>
-      <file>src/Testing/Laravel/AddTestingSupportForInclude.php</file>
     </exclude>
   </source>
 </phpunit>

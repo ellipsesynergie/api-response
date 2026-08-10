@@ -285,11 +285,6 @@ class BookController extends Controller {
 $ phpunit
 ```
 
-## Testing within Laravel
-
-According to the issue [#31](https://github.com/ellipsesynergie/api-response/issues/31), we have found some problem when it's time to test the `include` query parameter value.
-If you want to resolve this issue in your test, you must use the trait `EllipseSynergie\ApiResponse\Testing\Laravel\AddTestingSupportForInclude`. To replace the `call` method from `Illuminate\Foundation\Testing\Concerns\MakesHttpRequests::call`
-
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

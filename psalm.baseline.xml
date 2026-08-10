@@ -5,9 +5,4 @@
       <code><![CDATA[response()]]></code>
     </UndefinedFunction>
   </file>
-  <file src="src/Laravel/ResponseServiceProvider.php">
-    <UndefinedInterfaceMethod>
-      <code><![CDATA[$this->app]]></code>
-    </UndefinedInterfaceMethod>
-  </file>
 </files>

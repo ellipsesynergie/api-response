@@ -84,6 +84,19 @@ abstract class AbstractResponse implements Response
     }
 
     /**
+     * Parse the includes to embed in the response
+     *
+     * @param array|string $includes Array or csv string of resources to include
+     * @return static
+     */
+    public function includes(array|string $includes): static
+    {
+        $this->manager->parseIncludes($includes);
+
+        return $this;
+    }
+
+    /**
      * Implement this !!!
      * This method return the final response output
      *

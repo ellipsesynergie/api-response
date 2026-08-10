@@ -124,6 +124,35 @@ class ResponseTest extends TestCase
         $this->assertSame('bar', $response['meta']['foo']);
     }
 
+    public function testIncludesIsFluent()
+    {
+        $this->assertSame($this->response, $this->response->includes('author'));
+    }
+
+    public function testIncludesAcceptCsvString()
+    {
+        $this->response->includes('author,comments');
+
+        $this->assertSame(['author', 'comments'], $this->response->getManager()->getRequestedIncludes());
+    }
+
+    public function testIncludesAcceptArray()
+    {
+        $this->response->includes(['author', 'comments']);
+
+        $this->assertSame(['author', 'comments'], $this->response->getManager()->getRequestedIncludes());
+    }
+
+    public function testIncludesEmbedDataProperly()
+    {
+        $response = $this->response
+            ->includes('author')
+            ->withItem(['title' => 'My name is Bob!'], new TransformerFaker());
+
+        $this->assertSame('My name is Bob!', $response['data']['title']);
+        $this->assertSame('Maxime', $response['data']['author']['data']['name']);
+    }
+
     public function testWithCollectionReturnDataProperly()
     {
         $item = [

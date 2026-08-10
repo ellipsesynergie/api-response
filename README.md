@@ -169,6 +169,18 @@ class BookController extends Controller {
     }
     
     /**
+    * Example returning item with embedded data, without relying on the `include` query parameter
+    */
+    public function showWithIncludes($id)
+    {
+        //Get the book
+        $book = Book::find($id);
+
+        // Return a single book with the author embedded
+        return $this->response->includes('author')->withItem($book, new BookTransformer);
+    }
+
+    /**
     * Example resource not found
     */
     public function delete($id)

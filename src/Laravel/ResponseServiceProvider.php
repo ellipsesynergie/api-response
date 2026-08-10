@@ -66,7 +66,7 @@ class ResponseServiceProvider extends ServiceProvider
             }
 
             // Are we going to try and include embedded data?
-            $manager->parseIncludes($includes);
+            $manager->parseIncludes(array_filter($includes));
 
             return new Response($manager);
         });

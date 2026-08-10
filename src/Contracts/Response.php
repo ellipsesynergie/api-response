@@ -170,4 +170,13 @@ interface Response
      * @return mixed
      */
     public function errorUnwillingToProcess(string $message, array $headers = []);
+
+    /**
+     * Generates a Response with a 422 HTTP header and a given message.
+     *
+     * @param string $message
+     * @param array  $headers
+     * @return mixed
+     */
+    public function errorUnprocessable(string $message, array $headers = []);
 }

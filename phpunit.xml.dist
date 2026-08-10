@@ -9,8 +9,5 @@
     <include>
       <directory suffix=".php">./src</directory>
     </include>
-    <exclude>
-      <file>src/Laravel/ResponseServiceProvider.php</file>
-    </exclude>
   </source>
 </phpunit>

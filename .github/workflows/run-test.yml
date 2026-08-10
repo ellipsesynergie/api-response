@@ -28,7 +28,7 @@ jobs:
           php-version: ${{ matrix.php }}
 
       - name: Pin Laravel version
-        run: composer require "illuminate/contracts:${{ matrix.laravel }}" "illuminate/http:${{ matrix.laravel }}" --dev --no-update
+        run: composer require "illuminate/contracts:${{ matrix.laravel }}" "illuminate/http:${{ matrix.laravel }}" "illuminate/container:${{ matrix.laravel }}" --dev --no-update
 
       - name: Download dependencies
         uses: ramsey/composer-install@v3

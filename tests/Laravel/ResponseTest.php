@@ -23,9 +23,12 @@ class ResponseTest extends TestCase
         $validator->shouldReceive('getMessageBag')->once()->andReturn($messageBag);
         $response = new ResponseFake(new Manager());
 
-        $response->errorWrongArgsValidator($validator);
+        $result = $response->errorWrongArgsValidator($validator);
 
         $this->assertSame(400, $response->getStatusCode());
+        $this->assertSame(\EllipseSynergie\ApiResponse\AbstractResponse::CODE_WRONG_ARGS, $result['error']['code']);
+        $this->assertSame(400, $result['error']['http_code']);
+        $this->assertSame(['foo' => 'bar'], $result['error']['message']);
     }
 
     public function testWithPaginatorWorkProperly()
@@ -63,8 +66,33 @@ class ResponseTest extends TestCase
         );
     }
 
+    public function testWithPaginatorStripsPageFromAppendedQueryParams()
+    {
+        $_GET = ['page' => '2', 'sort' => 'name'];
+
+        $paginator = m::mock('Illuminate\Contracts\Pagination\LengthAwarePaginator');
+        $paginator->shouldReceive('items')->andReturn([['foo' => 'bar']]);
+        $paginator->shouldReceive('currentPage')->andReturn(2);
+        $paginator->shouldReceive('lastPage')->andReturn(2);
+        $paginator->shouldReceive('total')->andReturn(2);
+        $paginator->shouldReceive('perPage')->andReturn(1);
+        $paginator->shouldReceive('url')->andReturn('localhost');
+        $paginator->shouldReceive('count')->andReturn(1);
+        $paginator->shouldReceive('appends')->once()->with(['sort' => 'name']);
+
+        $response = new ResponseFake(new Manager());
+
+        $result = $response->withPaginator($paginator, function ($data) {
+            return $data;
+        });
+
+        $this->assertSame(['foo' => 'bar'], $result['data'][0]);
+    }
+
     public function tearDown(): void
     {
+        $_GET = [];
+
         m::close();
     }
 }
